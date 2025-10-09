@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --gray1: #111111;
+  --gray2: #555555;
+}
+
+@layer base {
+  body {
+    background: var(--background);
+    font-family: var(--font-inter);
+  }
+}
+
+@layer utilities {
+  .bg-gray-primary {
+    background-color: var(--gray1);
+  }
+
+  .text-gray-primary {
+    color: var(--gray1);
+  }
+
+  .text-gray-secondary {
+    color: var(--gray2);
+  }
+}
+
