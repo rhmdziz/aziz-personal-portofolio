@@ -1,6 +1,9 @@
 "use client";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { DownOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 export default function Home() {
   const roles = ["Full Stack", "Mobile", "Web", "Backend"];
@@ -9,39 +12,72 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % roles.length);
-    }, 2000);
+    }, 2500);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="max-w-5xl w-full h-screen flex flex-col-reverse md:flex-row justify-center md:justify-between items-center px-6 md:px-0">
-        <div className="text-left">
-          <h1 className="text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-black-primary">
-            Hi, I'm a
-            <br />
-            <span className="text-purple-primary">
-              <span key={roles[index]}>{roles[index]}</span>
-              <br /> Developer
-            </span>
-          </h1>
-          <p className="mt-4 md:mt-8 text-gray-secondary text-base sm:text-lg max-w-md mx-auto md:mx-0">
-            Currently I am studying at Prasetiya Mulya University majoring in
-            Digital Business Technology{" "}
-          </p>
-          <div className="bg-gray-primary inline-block mt-4 md:mt-8 py-3 px-8 rounded-xl cursor-pointer hover:opacity-90">
-            <p className="text-white-primary">Contact Me</p>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      {/* Hero Section */}
+      <div className="bg-white-primary w-full relative flex justify-center">
+        <div className="max-w-5xl w-full h-screen flex flex-col-reverse md:flex-row justify-center md:justify-between items-center px-6 md:px-0 relative">
+          <div className="text-left">
+            <h1 className="text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-black-primary ">
+              Hi, I'm a
+              <br />
+              <span className="text-purple-primary">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={roles[index]}
+                    initial={{ y: -30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.5, ease: "easeIn" }}
+                    className="inline-block"
+                  >
+                    {roles[index]}
+                  </motion.span>
+                </AnimatePresence>
+                <br /> Developer
+              </span>
+            </h1>
+            <p className="mt-4 md:mt-8 text-gray-secondary text-base sm:text-lg max-w-md mx-auto md:mx-0">
+              A passionate student from Universitas Prasetiya Mulya who loves
+              creating mobile and web applications.
+            </p>
+            <Link href="#contact">
+              <div className="bg-gray-primary inline-block mt-4 md:mt-8 py-4 px-8 rounded-2xl hover:opacity-90">
+                <p className="text-white-primary">Contact Me</p>
+              </div>
+            </Link>
+          </div>
+          <div className="mb-8 md:mb-0">
+            <Image
+              src="/images/me.png"
+              alt="Profile Picture"
+              width={400}
+              height={400}
+              className="mx-auto rounded-2xl object-cover"
+            />
           </div>
         </div>
-        <div className="mb-8 md:mb-0">
-          <Image
-            src="/images/me.png"
-            alt="Profile Picture"
-            width={400}
-            height={400}
-            className="mx-auto rounded-2xl object-cover"
-          />
-        </div>
+        <svg
+          className="absolute -bottom-40 pointer-events-none"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+        >
+          <path
+            fill="#673DE6"
+            fillOpacity="1"
+            d="M0,32L0,96L110.8,96L110.8,128L221.5,128L221.5,64L332.3,64L332.3,224L443.1,224L443.1,288L553.8,288L553.8,160L664.6,160L664.6,224L775.4,224L775.4,192L886.2,192L886.2,192L996.9,192L996.9,160L1107.7,160L1107.7,64L1218.5,64L1218.5,128L1329.2,128L1329.2,224L1440,224L1440,320L1329.2,320L1329.2,320L1218.5,320L1218.5,320L1107.7,320L1107.7,320L996.9,320L996.9,320L886.2,320L886.2,320L775.4,320L775.4,320L664.6,320L664.6,320L553.8,320L553.8,320L443.1,320L443.1,320L332.3,320L332.3,320L221.5,320L221.5,320L110.8,320L110.8,320L0,320L0,320Z"
+          ></path>
+        </svg>
+      </div>
+      <div
+        id="about"
+        className="bg-purple-primary w-full relative flex justify-center"
+      >
+        <div className="max-w-5xl w-full h-screen flex flex-col-reverse md:flex-row justify-center md:justify-between items-center px-6 md:px-0"></div>
       </div>
     </div>
   );

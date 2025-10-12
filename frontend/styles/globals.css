@@ -10,6 +10,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background: var(--background);
     font-family: var(--font-inter);
@@ -22,6 +26,12 @@
   }
   .bg-white-primary {
     background-color: var(--background);
+  }
+  .bg-black-primary {
+    background-color: var(--black);
+  }
+  .bg-purple-primary {
+    background-color: var(--purple);
   }
 
   .text-white-primary {
@@ -42,5 +52,14 @@
   .text-purple-primary {
     color: var(--purple);
   }
-}
 
+  .hover\:text-purple-primary:hover {
+    color: var(--purple);
+  }
+  .hover\:bg-gray-primary:hover {
+    background-color: var(--gray1);
+  }
+  .hover\:text-white-primary:hover {
+    color: var(--background);
+  }
+}
