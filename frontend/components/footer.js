@@ -1,6 +1,8 @@
 import {
+  GithubFilled,
   GithubOutlined,
-  LinkedinOutlined,
+  LinkedinFilled,
+  MailFilled,
   MailOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
@@ -15,15 +17,15 @@ export default function Footer() {
             <MailOutlined />
           </Link>
           <Link href="https://www.linkedin.com/in/azizrahmad" target="_blank">
-            <LinkedinOutlined />
+            <LinkedinFilled />
           </Link>
           <Link href="https://github.com/rhmdziz" target="_blank">
-            <GithubOutlined />
+            <GithubFilled />
           </Link>
         </div>
         <p className="text-xl">Let's connect and create something awesome!</p>
         <p className="text-sm ">
-          &copy; {new Date().getFullYear()} Aziz Rahmad
+          &copy; {new Date().getFullYear()} <Link href="/">Aziz Rahmad</Link>
         </p>
       </div>
     </footer>

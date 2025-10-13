@@ -1,14 +1,19 @@
 "use client";
 import { useState, useEffect } from "react";
-import { MoonOutlined, MoonFilled } from "@ant-design/icons";
+import {
+  MoonOutlined,
+  MoonFilled,
+  LinkedinOutlined,
+  LinkedinFilled,
+} from "@ant-design/icons";
 import Link from "next/link";
 
 export default function Navbar() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // const [isDarkMode, setIsDarkMode] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  // const toggleDarkMode = () => {
+  //   setIsDarkMode(!isDarkMode);
+  // };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,7 +73,11 @@ export default function Navbar() {
               <p className="py-2 font-medium">Resume</p>
             </div>
           </Link>
-
+          <Link href="https://www.linkedin.com/in/azizrahmad" target="_blank">
+            <div className="border-2 rounded-xl px-3 text-[var(--gray-primary)] hover:text-[var(--purple)] transition">
+              <LinkedinFilled className="py-3 text-[var(--gray-primary)]" />
+            </div>
+          </Link>
           {/* {isDarkMode ? (
             <MoonFilled onClick={toggleDarkMode} className="cursor-pointer" />
           ) : (

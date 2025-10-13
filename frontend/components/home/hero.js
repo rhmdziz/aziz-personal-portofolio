@@ -41,9 +41,9 @@ export default function Hero() {
             A passionate student from Universitas Prasetiya Mulya who loves
             creating mobile and web applications.
           </p>
-          <Link href="#contact">
+          <Link href="#about">
             <div className="bg-[var(--gray-primary)] inline-block mt-4 md:mt-8 py-4 px-8 rounded-2xl hover:opacity-90">
-              <p className="text-[var(--background)]">Contact Me</p>
+              <p className="text-[var(--background)]">Get to know me!</p>
             </div>
           </Link>
         </div>
