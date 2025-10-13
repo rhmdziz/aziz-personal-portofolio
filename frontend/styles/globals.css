@@ -2,10 +2,9 @@
 
 :root {
   --background: #f6f6f6;
-  --foreground: #171717;
-  --black: #1D1E20;
-  --gray1: #111111;
-  --gray2: #555555;
+  --foreground: #1D1E20;
+  --gray-primary: #111111;
+  --gray-secondary: #555555;
   --purple: #673DE6;
 }
 
@@ -17,49 +16,5 @@
   body {
     background: var(--background);
     font-family: var(--font-inter);
-  }
-}
-
-@layer utilities {
-  .bg-gray-primary {
-    background-color: var(--gray1);
-  }
-  .bg-white-primary {
-    background-color: var(--background);
-  }
-  .bg-black-primary {
-    background-color: var(--black);
-  }
-  .bg-purple-primary {
-    background-color: var(--purple);
-  }
-
-  .text-white-primary {
-    color: var(--background);
-  }
-
-  .text-black-primary {
-    color: var(--black);
-  }
-
-  .text-gray-primary {
-    color: var(--gray1);
-  }
-
-  .text-gray-secondary {
-    color: var(--gray2);
-  }
-  .text-purple-primary {
-    color: var(--purple);
-  }
-
-  .hover\:text-purple-primary:hover {
-    color: var(--purple);
-  }
-  .hover\:bg-gray-primary:hover {
-    background-color: var(--gray1);
-  }
-  .hover\:text-white-primary:hover {
-    color: var(--background);
   }
 }

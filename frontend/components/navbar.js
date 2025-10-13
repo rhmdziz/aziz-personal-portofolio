@@ -26,56 +26,45 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed w-full py-2 flex justify-center z-[9999] ${
-        isScrolled ? "bg-white-primary shadow" : "bg-white-primary"
+        isScrolled ? "bg-[var(--background)] shadow" : "bg-[var(--background)]"
       }`}
     >
       <div className="max-w-5xl flex justify-between items-center w-full">
         <div className="flex items-center gap-24">
           <Link href="/" className="text-lg md:text-2xl font-medium">
             <p className="py-2">
-              <span className="text-purple-primary">Az</span>
-              <span className="text-gray-primary">iz Rahmad</span>
+              <span className="text-[var(--purple)]">Az</span>
+              <span className="text-[var(--gray-primary)]">iz Rahmad</span>
             </p>
           </Link>
           <ul className="hidden md:flex items-center gap-6 text-sm">
-            <li>
-              <Link
-                href="/projects"
-                className="text-gray-primary hover:text-purple-primary"
-              >
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/skills"
-                className="text-gray-primary hover:text-purple-primary"
-              >
-                Skills
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className="text-gray-primary hover:text-purple-primary"
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/about"
-                className="text-gray-primary hover:text-purple-primary"
-              >
-                About
-              </Link>
-            </li>
+            {[
+              { name: "Projects", href: "/projects" },
+              { name: "Skills", href: "/skills" },
+              { name: "Contact", href: "/contact" },
+              { name: "About", href: "/about" },
+            ].map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  className="
+                    relative text-[var(--gray-primary)] transition-all duration-300
+                    before:content-[''] before:absolute before:-bottom-1 before:left-0
+                    before:w-0 before:h-[2px] before:bg-[var(--purple)]
+                    hover:before:w-full hover:text-[var(--purple)]
+                    before:transition-all before:duration-300
+                  "
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
         <div className="flex items-center gap-4">
           <Link href="/cv/aziz">
-            <div className="border rounded-xl px-4 text-gray-primary hover:text-purple-primary transition">
+            <div className="border rounded-xl px-4 text-[var(--gray-primary)] hover:text-[var(--purple)] transition">
               <p className="py-1">CV</p>
             </div>
           </Link>

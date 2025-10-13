@@ -19,13 +19,13 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       {/* Hero Section */}
-      <div className="bg-white-primary w-full relative flex justify-center">
+      <div className="bg-[var(--background)] w-full relative flex justify-center">
         <div className="max-w-5xl w-full h-screen flex flex-col-reverse md:flex-row justify-center md:justify-between items-center px-6 md:px-0 relative">
-          <div className="text-left">
-            <h1 className="text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-black-primary ">
+          <div className="text-left ">
+            <h1 className="text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-[var(--gray-primary)]">
               Hi, I'm a
               <br />
-              <span className="text-purple-primary">
+              <span className="text-[var(--purple)]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={roles[index]}
@@ -41,13 +41,13 @@ export default function Home() {
                 <br /> Developer
               </span>
             </h1>
-            <p className="mt-4 md:mt-8 text-gray-secondary text-base sm:text-lg max-w-md mx-auto md:mx-0">
+            <p className="mt-4 md:mt-8 text-[var(--gray-secondary)] text-base sm:text-lg max-w-md mx-auto md:mx-0">
               A passionate student from Universitas Prasetiya Mulya who loves
               creating mobile and web applications.
             </p>
             <Link href="#contact">
-              <div className="bg-gray-primary inline-block mt-4 md:mt-8 py-4 px-8 rounded-2xl hover:opacity-90">
-                <p className="text-white-primary">Contact Me</p>
+              <div className="bg-[var(--gray-primary)] inline-block mt-4 md:mt-8 py-4 px-8 rounded-2xl hover:opacity-90">
+                <p className="text-[var(--background)]">Contact Me</p>
               </div>
             </Link>
           </div>
@@ -75,9 +75,9 @@ export default function Home() {
       </div>
       <div
         id="about"
-        className="bg-purple-primary w-full relative flex justify-center"
+        className="bg-[var(--purple)] w-full relative flex justify-center"
       >
-        <div className="max-w-5xl w-full h-screen flex flex-col-reverse md:flex-row justify-center md:justify-between items-center px-6 md:px-0"></div>
+        <div className="max-w-5xl w-full h-screen flex flex-col-reverse md:flex-row justify-center md:justify-between items-center px-6 md:px-0 relative"></div>
       </div>
     </div>
   );
