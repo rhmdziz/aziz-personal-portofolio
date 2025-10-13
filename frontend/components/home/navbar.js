@@ -63,17 +63,17 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Link href="/cv/aziz">
+          <Link href="/cv/aziz" target="_blank">
             <div className="border-2 rounded-xl px-4 text-[var(--gray-primary)] hover:text-[var(--purple)] transition">
-              <p className="py-1 font-medium">CV</p>
+              <p className="py-2 font-medium">Resume</p>
             </div>
           </Link>
 
-          {isDarkMode ? (
+          {/* {isDarkMode ? (
             <MoonFilled onClick={toggleDarkMode} className="cursor-pointer" />
           ) : (
             <MoonOutlined onClick={toggleDarkMode} className="cursor-pointer" />
-          )}
+          )} */}
         </div>
       </div>
     </nav>

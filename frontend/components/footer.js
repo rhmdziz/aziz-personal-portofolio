@@ -1,9 +1,29 @@
+import {
+  GithubOutlined,
+  LinkedinOutlined,
+  MailOutlined,
+} from "@ant-design/icons";
+import Link from "next/link";
+
 export default function Footer() {
   return (
-    <footer className="bg-[var(--gray-primary)] py-4">
-      <div className="container mx-auto text-center">
-        <p className="text-sm text-[var(--gray-secondary)]">
-          &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+    <footer className="bg-[var(--background)] py-4">
+      <hr className="border-[var(--gray-secondary)] opacity-30" />
+      <div className="mx-auto text-center text-[var(--gray-primary)] space-y-2 py-10">
+        <div className="flex justify-center items-center space-x-4 ">
+          <Link href="mailto:rahmadaziz288@gmail.com" target="_blank">
+            <MailOutlined />
+          </Link>
+          <Link href="https://www.linkedin.com/in/azizrahmad" target="_blank">
+            <LinkedinOutlined />
+          </Link>
+          <Link href="https://github.com/rhmdziz" target="_blank">
+            <GithubOutlined />
+          </Link>
+        </div>
+        <p className="text-xl">Let's connect and create something awesome!</p>
+        <p className="text-sm ">
+          &copy; {new Date().getFullYear()} Aziz Rahmad
         </p>
       </div>
     </footer>
