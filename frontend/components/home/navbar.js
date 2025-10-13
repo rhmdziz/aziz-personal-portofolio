@@ -29,23 +29,23 @@ export default function Navbar() {
         isScrolled ? "bg-[var(--background)] shadow" : "bg-[var(--background)]"
       }`}
     >
-      <div className="max-w-5xl flex justify-between items-center w-full">
-        <div className="flex items-center gap-24">
-          <Link href="/" className="text-lg md:text-2xl font-medium">
+      <div className="max-w-5xl flex justify-between items-center w-full px-6 md:px-0">
+        <div className="flex items-center gap-24 ">
+          <a href="#" className="text-2xl font-medium">
             <p className="py-2">
               <span className="text-[var(--purple)]">Az</span>
               <span className="text-[var(--gray-primary)]">iz Rahmad</span>
             </p>
-          </Link>
-          <ul className="hidden md:flex items-center gap-6 text-sm">
+          </a>
+          <ul className="hidden md:flex items-center gap-6">
             {[
-              { name: "Projects", href: "/projects" },
-              { name: "Skills", href: "/skills" },
-              { name: "Contact", href: "/contact" },
-              { name: "About", href: "/about" },
+              { name: "About", href: "#about" },
+              { name: "Projects", href: "#projects" },
+              { name: "Skills", href: "#skills" },
+              { name: "Contact", href: "#contact" },
             ].map((item) => (
               <li key={item.name}>
-                <Link
+                <a
                   href={item.href}
                   className="
                     relative text-[var(--gray-primary)] transition-all duration-300
@@ -56,7 +56,7 @@ export default function Navbar() {
                   "
                 >
                   {item.name}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -64,8 +64,8 @@ export default function Navbar() {
 
         <div className="flex items-center gap-4">
           <Link href="/cv/aziz">
-            <div className="border rounded-xl px-4 text-[var(--gray-primary)] hover:text-[var(--purple)] transition">
-              <p className="py-1">CV</p>
+            <div className="border-2 rounded-xl px-4 text-[var(--gray-primary)] hover:text-[var(--purple)] transition">
+              <p className="py-1 font-medium">CV</p>
             </div>
           </Link>
 
