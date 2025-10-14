@@ -11,17 +11,13 @@ export const metadata = {
 const fontDM_Sans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
 });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={` ${fontDM_Sans.variable} antialiased`}>
-        
-        {children}
-        <Footer />
-      </body>
+      <body className={` ${fontDM_Sans.variable} antialiased`}>{children}</body>
     </html>
   );
 }
