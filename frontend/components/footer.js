@@ -23,7 +23,9 @@ export default function Footer() {
             <GithubFilled />
           </Link>
         </div>
-        <p className="text-xl">Let's connect and create something awesome!</p>
+        <p className="text-xl">
+          Let&lsquo;s connect and create something awesome!
+        </p>
         <p className="text-sm ">
           &copy; {new Date().getFullYear()} <Link href="/">Aziz Rahmad</Link>
         </p>

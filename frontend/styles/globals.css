@@ -12,6 +12,9 @@
   html {
     scroll-behavior: smooth;
   }
+  * {
+    color-scheme: light !important;
+  }
 
   body {
     background: var(--background);

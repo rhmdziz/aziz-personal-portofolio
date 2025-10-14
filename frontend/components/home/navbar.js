@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import {
   MoonOutlined,
   MoonFilled,
-  LinkedinOutlined,
+
   LinkedinFilled,
 } from "@ant-design/icons";
 import Link from "next/link";

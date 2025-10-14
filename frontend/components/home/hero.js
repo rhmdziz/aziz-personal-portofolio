@@ -12,14 +12,14 @@ export default function Hero() {
       setIndex((prev) => (prev + 1) % roles.length);
     }, 2500);
     return () => clearInterval(timer);
-  }, []);
+  }, [roles.length]);
 
   return (
     <div className="bg-[var(--background)] w-full relative flex justify-center">
       <div className="max-w-5xl w-full h-screen flex flex-col-reverse md:flex-row justify-center md:justify-between items-center px-6 md:px-0 relative">
         <div className="text-left ">
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-[var(--gray-primary)]">
-            Hi, I'm a
+            Hi, I&lsquo;m a
             <br />
             <span className="text-[var(--purple)]">
               <AnimatePresence mode="wait">
