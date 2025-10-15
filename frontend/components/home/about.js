@@ -3,36 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { experiences } from "@/data/experiences";
 
 export default function About() {
-  const experiences = [
-    {
-      period: "Sep 2025 – now",
-      title: "Coding Teacher",
-      company: "Timedoor Academy",
-    },
-    {
-      period: "Juni – September 2025",
-      title: "Mobile Developer Intern",
-      company: "Kementerian Koperasi",
-    },
-    {
-      period: "Jan – May 2025",
-      title: "Assistant Laboratory",
-      company: "Universitas Prasetiya Mulya",
-    },
-    {
-      period: "Aug – Dec 2024",
-      title: "Mobile Development Cohort",
-      company: "Bangkit Academy",
-    },
-    {
-      period: "Jan – Jun 2024",
-      title: "Frontend Developer Intern",
-      company: "Youtz Media",
-    },
-  ];
-
   return (
     <div
       id="about"
@@ -57,7 +30,7 @@ export default function About() {
                 loop={true}
                 className="rounded-xl overflow-hidden"
               >
-                {["1.png", "2.png", "3.png", "4.png"].map((img, i) => (
+                {["1.png", "2.png", "3.png", "4.png", "5.png"].map((img, i) => (
                   <SwiperSlide key={i}>
                     <div className="relative w-full h-[400px]">
                       <Image
@@ -75,18 +48,16 @@ export default function About() {
               I am an undergraduate student majoring in Digital Business
               Technology at Universitas Prasetiya Mulya.
             </p>
-            <p className="mt-1 md:mt-2 text-[var(--background)] text-base sm:text-lg mx-auto md:mx-0">
-              Long story short, I started my programming journey at 14, learning
-              Web Development, after two years, I started to learn Android
-              Development using Kotlin while in Vocational High School. I also
-              have some experience in Machine Learning.
+            <p className="mt-4 text-[var(--background)] text-base sm:text-lg mx-auto md:mx-0">
+              My journey began with curiosity about how mobile and web
+              applications are built, which soon evolved into a strong drive to
+              design and develop impactful digital solutions.
             </p>
-            <p className="mt-1 md:mt-2 text-[var(--background)] text-base sm:text-lg mx-auto md:mx-0">
-              During my undergraduate studies, I will learn about Machine
-              Learning in-depth and gain experience in leadership and
-              organization. I believe that with this level of knowledge and
-              experience, I will be able to improve myself and contribute to
-              society.
+            <p className="mt-4 text-[var(--background)] text-base sm:text-lg mx-auto md:mx-0">
+              Through both university projects and independent learning, I've
+              honed my skills in mobile development (Flutter, Kotlin) and web
+              technologies (React, Next.js), always striving to deliver products
+              that are not only functional but meaningful to users.
             </p>
           </div>
           <div className="md:max-w-[50%]">

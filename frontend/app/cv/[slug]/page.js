@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 import React, { useRef, useEffect, useState } from "react";
 
-import Main from "@/components/main";
+import Main from "@/components/layout/main";
 
 import { DownloadOutlined } from "@ant-design/icons";
 import { useParams } from "next/navigation";

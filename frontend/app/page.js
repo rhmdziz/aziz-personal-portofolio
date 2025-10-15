@@ -1,10 +1,11 @@
 "use client";
 
-import Footer from "@/components/footer";
+import Footer from "@/components/layout/footer";
 import About from "@/components/home/about";
 import Hero from "@/components/home/hero";
 import Navbar from "@/components/home/navbar";
-import Main from "@/components/main";
+import Main from "@/components/layout/main";
+import Project from "@/components/home/project";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Main>
         <Hero />
         <About />
+        <Project />
       </Main>
       <Footer />
     </>

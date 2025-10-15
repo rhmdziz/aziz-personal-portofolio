@@ -1,10 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { MoonOutlined, MoonFilled, LinkedinFilled } from "@ant-design/icons";
-import Link from "next/link";
-import ButtonFill from "./button";
-import ButtonOutline from "./button";
-import Button from "./button";
+
+import Button from "../button";
 
 export default function Navbar() {
   // const [isDarkMode, setIsDarkMode] = useState(false);
@@ -43,8 +41,8 @@ export default function Navbar() {
           <ul className="hidden md:flex items-center gap-6">
             {[
               { name: "About", href: "#about" },
-              { name: "Projects", href: "#projects" },
-              { name: "Skills", href: "#skills" },
+              { name: "Projects", href: "#project" },
+              { name: "Skills", href: "#skill" },
               { name: "Contact", href: "#contact" },
             ].map((item) => (
               <li key={item.name}>

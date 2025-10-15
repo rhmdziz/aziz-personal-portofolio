@@ -1,6 +1,6 @@
 import { DM_Sans } from "next/font/google";
 import "../styles/globals.css";
-import Footer from "@/components/footer";
+import Footer from "@/components/layout/footer";
 import Navbar from "@/components/home/navbar";
 
 export const metadata = {

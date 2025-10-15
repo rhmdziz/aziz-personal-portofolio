@@ -11,7 +11,7 @@ export default function Button({
   className = "",
 }) {
   const baseClass = `
-    inline-block cursor-pointer rounded-xl font-medium transition-all duration-300
+    inline-block cursor-pointer rounded-xl font-medium transition-all duration-200
   `;
 
   const variantClass =

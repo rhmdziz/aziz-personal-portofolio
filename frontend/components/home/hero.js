@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import Button from "./button";
+import Button from "../button";
 
 export default function Hero() {
   const roles = ["Full Stack", "Mobile", "Backend", "Frontend"];
@@ -17,7 +17,7 @@ export default function Hero() {
 
   return (
     <div className="bg-[var(--background)] w-full relative flex justify-center">
-      <div className="max-w-5xl w-full h-screen flex flex-col-reverse md:flex-row justify-center md:justify-between items-center px-6 md:px-0 relative">
+      <div className="max-w-5xl w-full min-h-screen flex flex-col-reverse md:flex-row justify-center md:justify-between items-center px-6 md:px-0 relative">
         <div className="text-left ">
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-[var(--gray-primary)]">
             Hi, I&lsquo;m a
@@ -43,7 +43,11 @@ export default function Hero() {
             creating mobile and web applications.
           </p>
 
-          <Button variant="fill" href="#about" className="mt-4 md:mt-8">
+          <Button
+            variant="fill"
+            href="#about"
+            className="mt-4 md:mt-8 mb-4 md:mb-0"
+          >
             Get to know me!
           </Button>
         </div>
