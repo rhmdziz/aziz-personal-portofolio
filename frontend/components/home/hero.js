@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import Button from "./button";
 
 export default function Hero() {
   const roles = ["Full Stack", "Mobile", "Backend", "Frontend"];
@@ -41,11 +42,10 @@ export default function Hero() {
             A passionate student from Universitas Prasetiya Mulya who loves
             creating mobile and web applications.
           </p>
-          <Link href="#about">
-            <div className="bg-[var(--gray-primary)] inline-block mt-4 md:mt-8 py-4 px-8 rounded-2xl hover:opacity-90">
-              <p className="text-[var(--background)]">Get to know me!</p>
-            </div>
-          </Link>
+
+          <Button variant="fill" href="#about" className="mt-4 md:mt-8">
+            Get to know me!
+          </Button>
         </div>
         <div className="mb-8 md:mb-0 relative">
           <Image

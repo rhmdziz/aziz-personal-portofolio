@@ -1,12 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import {
-  MoonOutlined,
-  MoonFilled,
-
-  LinkedinFilled,
-} from "@ant-design/icons";
+import { MoonOutlined, MoonFilled, LinkedinFilled } from "@ant-design/icons";
 import Link from "next/link";
+import ButtonFill from "./button";
+import ButtonOutline from "./button";
+import Button from "./button";
 
 export default function Navbar() {
   // const [isDarkMode, setIsDarkMode] = useState(false);
@@ -68,16 +66,14 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Link href="/cv/aziz" target="_blank">
-            <div className="border-2 rounded-xl px-4 text-[var(--gray-primary)] hover:text-[var(--purple)] transition">
-              <p className="py-2 font-medium">Resume</p>
-            </div>
-          </Link>
-          <Link href="https://www.linkedin.com/in/azizrahmad" target="_blank">
-            <div className="border-2 rounded-xl px-3 text-[var(--gray-primary)] hover:text-[var(--purple)] transition">
-              <LinkedinFilled className="py-3 text-[var(--gray-primary)]" />
-            </div>
-          </Link>
+          <Button href="/cv/aziz" target="_blank">
+            <p className="font-medium">Resume</p>
+          </Button>
+
+          <Button href="https://www.linkedin.com/in/azizrahmad" target="_blank">
+            <LinkedinFilled className=" text-[var(--gray-primary)]" />
+          </Button>
+
           {/* {isDarkMode ? (
             <MoonFilled onClick={toggleDarkMode} className="cursor-pointer" />
           ) : (

@@ -25,4 +25,14 @@
   .ant-drawer * {
     font-family: var(--font-dm-sans), sans-serif !important;
   }
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #fff !important;
+    transition: opacity 0.3s ease;
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    opacity: 0.7;
+  }
 }

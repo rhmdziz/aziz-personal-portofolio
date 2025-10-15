@@ -13,6 +13,7 @@ import Main from "@/components/main";
 
 import { DownloadOutlined } from "@ant-design/icons";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 export default function CV() {
   const { slug } = useParams();
@@ -198,11 +199,18 @@ export default function CV() {
       </Drawer>
 
       <div className=" bg-white fixed p-[1rem] h-full shadow-2xl">
-        <Button
-          type="text"
-          icon={<MenuOutlined />}
-          onClick={() => setOpenSidebar(true)}
-        />
+        <motion.div
+          animate={{
+            x: openSidebar ? -100 : 0,
+            transition: { type: "spring", stiffness: 120, damping: 15 },
+          }}
+        >
+          <Button
+            type="text"
+            icon={<MenuOutlined />}
+            onClick={() => setOpenSidebar(true)}
+          />
+        </motion.div>
       </div>
 
       <Main>
