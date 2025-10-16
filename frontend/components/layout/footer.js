@@ -11,8 +11,8 @@ export default function Footer() {
   return (
     <footer className="bg-[var(--background)] py-4">
       <hr className="border-[var(--gray-secondary)] opacity-30" />
-      <div className="mx-auto text-center text-[var(--gray-primary)] space-y-2 py-10">
-        <div className="flex justify-center items-center space-x-4 ">
+      <div className="mx-auto text-center text-[var(--gray-primary)] space-y-4 py-10">
+        <div className="flex justify-center items-center space-x-4 text-2xl">
           <Link href="mailto:rahmadaziz288@gmail.com" target="_blank">
             <MailOutlined />
           </Link>
@@ -23,7 +23,7 @@ export default function Footer() {
             <GithubFilled />
           </Link>
         </div>
-        <p className="text-xl">
+        <p className="text-4xl">
           Let&lsquo;s connect and create something awesome!
         </p>
         <p className="text-sm ">

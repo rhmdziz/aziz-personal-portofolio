@@ -21,11 +21,11 @@ export default function Project() {
       id="project"
       className="bg-[var(--background)] w-full relative flex justify-center"
     >
-      <div className="max-w-5xl w-full min-h-screen  px-6 md:px-0 relative mt-24">
+      <div className="max-w-5xl w-full   px-6 md:px-0 relative mt-24">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-medium  text-[var(--gray-primary)] ">
           Some of my project
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 mb-4">
           {sortedProjects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -111,7 +111,6 @@ export default function Project() {
               {selectedProject.description}
             </p>
 
-            {/* Tech Stack */}
             {selectedProject.tech && (
               <div className="mt-4 flex flex-wrap gap-2">
                 {selectedProject.tech.map((t, idx) => (

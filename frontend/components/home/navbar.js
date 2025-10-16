@@ -38,7 +38,7 @@ export default function Navbar() {
               <span className="text-[var(--gray-primary)]">iz Rahmad</span>
             </p>
           </a>
-          <ul className="hidden md:flex items-center gap-6">
+          <ul className="hidden md:flex items-center gap-8">
             {[
               { name: "About", href: "#about" },
               { name: "Project", href: "#project" },

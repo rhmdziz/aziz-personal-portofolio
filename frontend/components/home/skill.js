@@ -36,7 +36,7 @@ export default function Skill() {
                 </div>
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-[var(--purple)] text-[var(--background)] rounded-xl shadow-md [transform:rotateY(180deg)] backface-hidden">
-                  <p className="text-sm sm:text-base font-medium">
+                  <p className="text-base font-medium px-4 md:px-0">
                     {skill.name}
                   </p>
                 </div>

@@ -40,6 +40,16 @@ export const skills = [
     icon: <img fill="true" src="/icons/djangorest.png" alt="Figma Icon" />,
   },
   {
+    name: "Google App Script",
+    icon: (
+      <img
+        fill="true"
+        src="/icons/appscript.png"
+        alt="Google App Script Icon"
+      />
+    ),
+  },
+  {
     name: "Figma",
     icon: <img fill="true" src="/icons/figma.png" alt="Figma Icon" />,
   },
