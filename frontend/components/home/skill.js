@@ -32,7 +32,7 @@ export default function Skill() {
             >
               <div className="group relative aspect-square [transform-style:preserve-3d] transition-transform duration-300 hover:[transform:rotateY(180deg)] cursor-default">
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-xl shadow-md backface-hidden">
-                  <div className="w-12 h-12 text-4xl">{skill.icon}</div>
+                  <div className="w-18 h-18 md:w-12 md:h-12">{skill.icon}</div>
                 </div>
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-[var(--purple)] text-[var(--background)] rounded-xl shadow-md [transform:rotateY(180deg)] backface-hidden">

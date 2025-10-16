@@ -55,10 +55,10 @@ export default function About() {
               design and develop impactful digital solutions.
             </p>
             <p className="mt-4 text-[var(--background)] text-base sm:text-lg mx-auto md:mx-0">
-              Through both university projects and independent learning, I've
-              honed my skills in mobile development (Flutter, Kotlin) and web
-              technologies (React, Next.js), always striving to deliver products
-              that are not only functional but meaningful to users.
+              Through both university projects and independent learning,
+              I&lsquo;ve honed my skills in mobile development (Flutter, Kotlin)
+              and web technologies (React, Next.js), always striving to deliver
+              products that are not only functional but meaningful to users.
             </p>
           </div>
           <div className="md:max-w-[50%]">

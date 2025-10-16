@@ -15,7 +15,7 @@ export const projects = [
     role: "Mobile Developer",
     title: "Hydratrack",
     description:
-      "A daily hydration tracker app using Flutter, which connects directly to an IoT smart bottle. The app tracks the user’s water intake in real-time by leveraging the MQTT protocol for instant and automatic data sync",
+      "A daily hydration tracker app using Flutter, which connects directly to an IoT smart bottle. The app tracks the users water intake in real-time by leveraging the MQTT protocol for instant and automatic data sync",
     image: "/images/project/hydratrack.png",
     date: "February – March 2025",
     tech: ["Flutter", "MQTT"],
