@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { motion } from "framer-motion";
 import { experiences } from "@/data/experiences";
 
 export default function About() {
@@ -65,15 +66,23 @@ export default function About() {
               <div className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-[var(--background)]"></div>
 
               {experiences.map((exp, index) => (
-                <div
+                <motion.div
                   key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.15,
+                    ease: "easeOut",
+                  }}
                   className="flex items-start gap-6 relative mb-8"
                 >
                   <div className="relative z-10">
                     <div className="w-3 h-3 bg-[var(--background)] rounded-full mt-4"></div>
                   </div>
 
-                  <div className="text-[var(--background)] ">
+                  <div className="text-[var(--background)]">
                     <p className="text-sm font-medium opacity-80 mt-3">
                       {exp.period}
                     </p>
@@ -83,7 +92,7 @@ export default function About() {
                       {exp.company}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

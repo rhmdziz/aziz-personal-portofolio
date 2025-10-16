@@ -41,8 +41,8 @@ export default function Navbar() {
           <ul className="hidden md:flex items-center gap-6">
             {[
               { name: "About", href: "#about" },
-              { name: "Projects", href: "#project" },
-              { name: "Skills", href: "#skill" },
+              { name: "Project", href: "#project" },
+              { name: "Skill", href: "#skill" },
               { name: "Contact", href: "#contact" },
             ].map((item) => (
               <li key={item.name}>
