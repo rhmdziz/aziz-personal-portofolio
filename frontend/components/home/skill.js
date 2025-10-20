@@ -53,7 +53,7 @@ export default function Skill() {
                 duration: 0.4,
                 delay: skills.length * 0.05 + i * 0.05,
               }}
-              className="aspect-square bg-gray-300 rounded-xl"
+              className="aspect-square bg-gray-300 rounded-xl hidden md:block"
             ></motion.div>
           ))}
         </div>

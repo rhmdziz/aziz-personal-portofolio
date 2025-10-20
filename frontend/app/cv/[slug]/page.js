@@ -13,22 +13,15 @@ import Main from "@/components/layout/main";
 
 import { DownloadOutlined } from "@ant-design/icons";
 import { useParams } from "next/navigation";
-import Link from "next/link";
+
+import { downloadPDF } from "@/utils/downloadPdf";
 
 export default function CV() {
   const { slug } = useParams();
   const [cvData, setCvData] = useState(null);
-  const [html2pdfLib, setHtml2pdfLib] = useState(null);
   const [openSidebar, setOpenSidebar] = useState(false);
 
   const targetRef = useRef();
-
-  useEffect(() => {
-    import("html2pdf.js").then((mod) => {
-      const lib = mod.default || mod.html2pdf || mod;
-      setHtml2pdfLib(() => lib);
-    });
-  }, []);
 
   useEffect(() => {
     import(`@/data/cv/${slug}.js`)
@@ -44,124 +37,7 @@ export default function CV() {
     );
 
   const handleDownload = () => {
-    if (!html2pdfLib || !targetRef.current) return;
-
-    const style = document.createElement("style");
-    style.id = "pdf-export-style";
-    style.innerHTML = `
-      .pdf-export,
-      .pdf-export * {
-        color: rgb(85, 85, 85) !important;
-        background-color: rgb(255, 255, 255) !important;
-        border-color: rgb(229, 231, 235) !important;
-      }
-      .pdf-export h1, 
-      .pdf-export h2, 
-      .pdf-export .text-\\[\\#111111\\] {
-        color: rgb(17, 17, 17) !important;
-      }
-      .pdf-export img {
-        background-color: transparent !important;  
-        /* display: none !important; */
-      }
-      /* Override Ant Design styles */
-      .pdf-export .ant-image,
-      .pdf-export .ant-image-img {
-        background-color: transparent !important;
-      }
-
-      .pdf-export .experience-images {
-        display: none !important; 
-      }
-      /* Hide icons in PDF */
-      .pdf-export .anticon,
-      .pdf-export [role="img"] {
-        display: none !important;
-      }
-      .pdf-export section {
-        page-break-inside: avoid;
-      }
-      /*
-      .pdf-export .experience-item,
-      .pdf-export .education-item {
-        page-break-inside: avoid;
-      }
-      */
-
-      /* Scale down all fonts by 50% */
-      .pdf-export * {
-        font-size: 1em !important;
-        line-height: 1.7 !important;
-      }
-      .pdf-export {
-        font-size: 16px !important;
-      }
-    `;
-    document.head.appendChild(style);
-    targetRef.current.classList.add("pdf-export");
-
-    const options = {
-      margin: [0.5, 0.5, 0.5, 0.5],
-      filename: `${slug}-cv.pdf`,
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        logging: true,
-        backgroundColor: "#ffffff",
-        allowTaint: true,
-        ignoreElements: (element) => {
-          return (
-            element.classList.contains("ant-image-preview") ||
-            element.classList.contains("ant-image-preview-mask") ||
-            element.classList.contains("ant-modal") ||
-            element.classList.contains("anticon") ||
-            (element.tagName === "svg" &&
-              element.parentElement?.tagName === "SPAN")
-          );
-        },
-        onclone: (clonedDoc) => {
-          const allElements = clonedDoc.querySelectorAll("*");
-          allElements.forEach((el) => {
-            const computed = window.getComputedStyle(el);
-            if (computed.color) {
-              el.style.color = "rgb(85, 85, 85)";
-            }
-            if (
-              computed.backgroundColor &&
-              computed.backgroundColor !== "rgba(0, 0, 0, 0)"
-            ) {
-              el.style.backgroundColor = "rgb(255, 255, 255)";
-            }
-          });
-
-          const icons = clonedDoc.querySelectorAll(".anticon, [role='img']");
-          icons.forEach((icon) => icon.remove());
-        },
-      },
-      jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
-    };
-
-    html2pdfLib()
-      .from(targetRef.current)
-      .set(options)
-      .save()
-      .then(() => {
-        // Cleanup
-        targetRef.current.classList.remove("pdf-export");
-        const styleEl = document.getElementById("pdf-export-style");
-        if (styleEl) {
-          document.head.removeChild(styleEl);
-        }
-      })
-      .catch((error) => {
-        console.error("PDF generation failed:", error);
-        targetRef.current.classList.remove("pdf-export");
-        const styleEl = document.getElementById("pdf-export-style");
-        if (styleEl) {
-          document.head.removeChild(styleEl);
-        }
-      });
+    downloadPDF(targetRef, slug);
   };
 
   return (
@@ -198,7 +74,7 @@ export default function CV() {
         </div>
       </Drawer>
 
-      <div className=" bg-white fixed p-[1rem] h-full shadow-2xl">
+      <div className=" bg-white fixed p-[1rem] w-full md:w-auto md:h-full z-[999]">
         <motion.div
           animate={{
             x: openSidebar ? -100 : 0,
@@ -222,7 +98,10 @@ export default function CV() {
         >
           <br />
           <br />
-          <div ref={targetRef} className="w-full  max-w-2xl mx-auto">
+          <div
+            ref={targetRef}
+            className="w-full max-w-2xl px-4 md:px-0 mt-12 md:mt-0 mx-auto"
+          >
             {/* Header */}
             <div id="header" className="flex gap-6">
               <Image
@@ -250,8 +129,11 @@ export default function CV() {
             <section id="experience" className="mt-8">
               <h2 className="text-base text-[#111111] mb-4">Experience</h2>
               {cvData.experience.map((exp, i) => (
-                <div key={i} className="flex items-start mb-6 gap-8">
-                  <div className="w-[125px]">
+                <div
+                  key={i}
+                  className="flex flex-col md:flex-row items-start mb-6 gap-2 md:gap-8"
+                >
+                  <div className="w-full md:w-[125px]">
                     <p className="text-sm text-[#555555]">{exp.period}</p>
                   </div>
                   <div className="w-full">
@@ -309,8 +191,11 @@ export default function CV() {
             <section id="education" className="mt-8">
               <h2 className="text-base text-[#111111] mb-4">Education</h2>
               {cvData.education.map((edu, i) => (
-                <div key={i} className="flex items-start mb-6 gap-8">
-                  <div className="w-[125px]">
+                <div
+                  key={i}
+                  className="flex flex-col md:flex-row items-start mb-6 gap-2 md:gap-8"
+                >
+                  <div className="w-full md:w-[125px]">
                     <p className="text-sm text-[#555555]">{edu.period}</p>
                   </div>
                   <div className="w-full">
