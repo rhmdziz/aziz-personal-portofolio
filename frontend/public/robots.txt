@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://azizrahmad.vercel.app
+
+# Sitemaps
+Sitemap: https://azizrahmad.vercel.app/sitemap.xml
