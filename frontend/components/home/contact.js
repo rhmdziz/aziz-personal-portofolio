@@ -102,14 +102,13 @@ export default function Contact() {
         <div className="flex flex-col md:flex-row items-center justify-center mt-4 gap-2">
           <p className="text-[var(--gray-primary)] text-base md:text-lg">
             Or reach me directly through{" "}
-            <Link
-              href="mailto:rahmadaziz288@gmail.com"
-              className="text-[var(--purple)]"
-            >
-              <MailOutlined />
-              rahmadaziz288@gmail.com
-            </Link>
           </p>
+          <Link
+            href="mailto:rahmadaziz288@gmail.com"
+            className="text-[var(--purple)]"
+          >
+            rahmadaziz288@gmail.com
+          </Link>
         </div>
       </div>
     </div>
