@@ -18,6 +18,18 @@ export async function downloadPDF(targetRef, slug) {
     .pdf-export .text-\\[\\#111111\\] {
       color: rgb(17, 17, 17) !important;
     }
+    .pdf-export .flex-col {
+      flex-direction: row !important;
+    }
+    .pdf-export .md\\:flex-row {
+      flex-direction: row !important;
+    }
+    .pdf-export .gap-2 {
+      gap: 1rem !important;
+    }
+    .pdf-export .w-full.md\\:w-\\[125px\\] {
+      width: 125px !important;
+  }
     .pdf-export img,
     .pdf-export .ant-image,
     .pdf-export .ant-image-img {

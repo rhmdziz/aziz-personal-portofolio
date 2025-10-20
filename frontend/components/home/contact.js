@@ -99,17 +99,17 @@ export default function Contact() {
             )}
           </div>
         </div>
-        <div className="flex items-center justify-center mt-4 gap-2">
-          <p className="text-[var(--gray-primary)] text-lg">
-            Or reach me directly through
+        <div className="flex flex-col md:flex-row items-center justify-center mt-4 gap-2">
+          <p className="text-[var(--gray-primary)] text-base md:text-lg">
+            Or reach me directly through{" "}
+            <Link
+              href="mailto:rahmadaziz288@gmail.com"
+              className="text-[var(--purple)]"
+            >
+              <MailOutlined />
+              rahmadaziz288@gmail.com
+            </Link>
           </p>
-          <Link
-            href="mailto:rahmadaziz288@gmail.com"
-            className="text-[var(--purple)]"
-          >
-            <MailOutlined />
-            rahmadaziz288@gmail.com
-          </Link>
         </div>
       </div>
     </div>
