@@ -34,6 +34,10 @@ export const metadata = {
     images: ["/og-image.jpg"],
   },
   metadataBase: new URL("https://azizrahmad.vercel.app"),
+
+  other: {
+    "google-site-verification": "zbnjIzvDgVj5eLn24rl-Ehr6GGoiUitQOMbbfYN-IIU",
+  },
 };
 
 const fontDM_Sans = DM_Sans({
