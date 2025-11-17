@@ -12,7 +12,7 @@ export default function About() {
       id="about"
       className="bg-[var(--purple)] w-full relative flex justify-center"
     >
-      <div className="max-w-5xl w-full min-h-screen  px-6 md:px-0 relative my-24">
+      <div className="max-w-4xl w-full min-h-screen  px-6 md:px-0 relative my-24">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-medium text-[var(--background)] ">
           My name is Aziz
         </h2>
@@ -38,7 +38,7 @@ export default function About() {
                         src={`/images/about/${img}`}
                         alt={`About ${i + 1}`}
                         fill
-                        className="object-cover rounded-lg"
+                        className="object-cover rounded-md"
                       />
                     </div>
                   </SwiperSlide>

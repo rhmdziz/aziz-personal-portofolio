@@ -30,7 +30,7 @@ export default function Navbar() {
         isScrolled ? "bg-[var(--background)] shadow" : "bg-[var(--background)]"
       }`}
     >
-      <div className="max-w-5xl flex justify-between items-center w-full px-6 md:px-0">
+      <div className="max-w-4xl flex justify-between items-center w-full px-6 md:px-0">
         <div className="flex items-center gap-24 ">
           <a href="#" className="text-2xl font-medium">
             <p className="py-2">

@@ -21,7 +21,7 @@ export default function Project() {
       id="project"
       className="bg-[var(--background)] w-full relative flex justify-center"
     >
-      <div className="max-w-5xl w-full   px-6 md:px-0 relative mt-24">
+      <div className="max-w-4xl w-full   px-6 md:px-0 relative mt-24">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-medium  text-[var(--gray-primary)] ">
           Some of my project
         </h2>
@@ -35,8 +35,8 @@ export default function Project() {
               onClick={() => handleOpen(project)}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <div className="bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-200 overflow-hidden cursor-pointer">
-                <div className="relative w-full h-[220px] overflow-hidden ">
+              <div className="bg-white rounded-md shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-200 overflow-hidden cursor-pointer">
+                <div className="relative w-full sm:h-[220px] h-[180px] overflow-hidden ">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -79,7 +79,7 @@ export default function Project() {
         }}
       >
         {selectedProject && (
-          <div className="px-2 sm:px-4 md:px-6 py-6">
+          <div className="px-2 py-4">
             <div className="relative w-full h-[220px] sm:h-[340px] mb-4 rounded-xl overflow-hidden">
               <Image
                 src={selectedProject.image}

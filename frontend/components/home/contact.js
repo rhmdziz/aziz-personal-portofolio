@@ -37,7 +37,7 @@ export default function Contact() {
       id="contact"
       className="relative w-full flex justify-center bg-[var(--background)]"
     >
-      <div className="max-w-5xl w-full px-6 md:px-0 relative mt-24 ">
+      <div className="max-w-4xl w-full px-6 md:px-0 relative mt-24 ">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-[var(--gray-primary)]">
           Contact Me
         </h2>
