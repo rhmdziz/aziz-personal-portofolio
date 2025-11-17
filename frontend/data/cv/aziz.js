@@ -1,11 +1,23 @@
 export const cvData = {
-  name: "Aziz Rahmad Isnanto",
-  title: "Mobile Developer",
+  name: "Aziz Rahmad",
+  title: "Software Developer",
   about: `A Digital Business Technology student at Prasetiya Mulya University
   with a strong passion for technology development, eager to contribute to
   innovative projects and grow in a dynamic environment.`,
 
   experience: [
+    {
+      period: "Nov 2025 - now",
+      role: "Software Engineer Intern",
+      company: "Takodam",
+      location: "Surakarta, Jawa Tengah",
+      logo: "/images/logo/takodam.png",
+      link: "https://takodam.id/",
+      points: [
+        "Support API, database, or dashboard integration",
+        "Collaborate with development, QA, and design teams",
+      ],
+    },
     {
       period: "Jun - Aug 2025",
       role: "Mobile Application Developer",

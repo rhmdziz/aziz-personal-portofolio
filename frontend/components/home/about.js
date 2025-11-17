@@ -33,7 +33,7 @@ export default function About() {
               >
                 {["1.png", "2.png", "3.png", "4.png", "5.png"].map((img, i) => (
                   <SwiperSlide key={i}>
-                    <div className="relative w-full h-[400px]">
+                    <div className="relative w-full h-[250px] md:h-[325px]">
                       <Image
                         src={`/images/about/${img}`}
                         alt={`About ${i + 1}`}
