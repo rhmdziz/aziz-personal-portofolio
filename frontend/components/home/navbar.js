@@ -64,9 +64,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button href="/cv/aziz" target="_blank">
+          {/* <Button href="/cv/aziz" target="_blank">
             <p className="font-medium">Resume</p>
-          </Button>
+          </Button> */}
 
           <Button href="https://www.linkedin.com/in/azizrahmad" target="_blank">
             <LinkedinFilled className=" text-[var(--gray-primary)]" />

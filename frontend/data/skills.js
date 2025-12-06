@@ -53,4 +53,12 @@ export const skills = [
     name: "Figma",
     icon: <img fill="true" src="/icons/figma.png" alt="Figma Icon" />,
   },
+  {
+    name: "Angular",
+    icon: <img fill="true" src="/icons/angular.png" alt="Angular Icon" />,
+  },
+  {
+    name: ".NET",
+    icon: <img fill="true" src="/icons/dotnet.png" alt=".NET Icon" />,
+  }
 ];

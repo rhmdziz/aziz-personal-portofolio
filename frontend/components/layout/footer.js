@@ -13,7 +13,7 @@ export default function Footer() {
       <hr className="border-[var(--gray-secondary)] opacity-30" />
       <div className="mx-auto text-center text-[var(--gray-primary)] space-y-4 py-10">
         <div className="flex justify-center items-center space-x-4 text-2xl">
-          <Link href="mailto:rahmadaziz288@gmail.com" target="_blank">
+          <Link href="mailto:halo@azizrahmad.com" target="_blank">
             <MailOutlined />
           </Link>
           <Link href="https://www.linkedin.com/in/azizrahmad" target="_blank">
