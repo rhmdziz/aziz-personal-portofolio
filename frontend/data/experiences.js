@@ -1,12 +1,12 @@
 export const experiences = [
   {
     period: "November 2025 – now",
-    title: "Software Engineer Intern",
+    title: "Full Stack Engineer Intern",
     company: "Takodam"
   },
   {
     period: "Sep 2025 – now",
-    title: "Part-time Coding Teacher",
+    title: "Coding Teacher",
     company: "Timedoor Academy",
   },
   {

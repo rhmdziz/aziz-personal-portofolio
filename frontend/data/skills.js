@@ -1,8 +1,8 @@
 export const skills = [
-  {
-    name: "HTML",
-    icon: <img fill="true" src="/icons/html.png" alt="Figma Icon" />,
-  },
+  // {
+  //   name: "HTML",
+  //   icon: <img fill="true" src="/icons/html.png" alt="Figma Icon" />,
+  // },
   {
     name: "Next.js",
     icon: <img fill="true" src="/icons/next.webp" alt="Kotlin Icon" />,
@@ -23,10 +23,10 @@ export const skills = [
     name: "Kotlin",
     icon: <img fill="true" src="/icons/kotlin.png" alt="Kotlin Icon" />,
   },
-  {
-    name: "Laravel",
-    icon: <img fill="true" src="/icons/laravel.png" alt="Laravel Icon" />,
-  },
+  // {
+  //   name: "Laravel",
+  //   icon: <img fill="true" src="/icons/laravel.png" alt="Laravel Icon" />,
+  // },
   {
     name: "Django",
     icon: <img fill="true" src="/icons/django.png" alt="Django Icon" />,
@@ -60,5 +60,13 @@ export const skills = [
   {
     name: ".NET",
     icon: <img fill="true" src="/icons/dotnet.png" alt=".NET Icon" />,
+  },
+  {
+    name: "Docker",
+    icon: <img fill="true" src="/icons/docker.png" alt="Docker Icon" />,
+  },
+  {
+    name: "PostgreSQL",
+    icon: <img fill="true" src="/icons/posgresql.png" alt="PostgreSQL Icon" />,
   }
 ];
