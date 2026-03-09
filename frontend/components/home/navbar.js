@@ -32,7 +32,7 @@ export default function Navbar() {
     >
       <div className="max-w-4xl flex justify-between items-center w-full px-6 md:px-0">
         <div className="flex items-center gap-24 ">
-          <a href="#" className="text-2xl font-medium">
+          <a href="/" className="text-2xl font-medium">
             <p className="py-2">
               <span className="text-[var(--purple)]">Az</span>
               <span className="text-[var(--gray-primary)]">iz Rahmad</span>
@@ -40,10 +40,10 @@ export default function Navbar() {
           </a>
           <ul className="hidden md:flex items-center gap-8">
             {[
-              { name: "About", href: "#about" },
-              { name: "Project", href: "#project" },
-              { name: "Skill", href: "#skill" },
-              { name: "Contact", href: "#contact" },
+              { name: "About", href: "/#about" },
+              { name: "Project", href: "/#project" },
+              { name: "Skill", href: "/#skill" },
+              { name: "Contact", href: "/#contact" },
             ].map((item) => (
               <li key={item.name}>
                 <a
@@ -64,9 +64,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          {/* <Button href="/cv/aziz" target="_blank">
+          <Button href="/cv">
             <p className="font-medium">Resume</p>
-          </Button> */}
+          </Button>
 
           <Button href="https://www.linkedin.com/in/azizrahmad" target="_blank">
             <LinkedinFilled className=" text-[var(--gray-primary)]" />

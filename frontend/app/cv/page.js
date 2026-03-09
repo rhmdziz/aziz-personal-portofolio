@@ -6,34 +6,28 @@ import { ExportOutlined } from "@ant-design/icons";
 
 import React, { useRef, useEffect, useState } from "react";
 
-import Main from "@/components/layout/main";
-
-import { useParams } from "next/navigation";
-
 import { downloadPDF } from "@/utils/downloadPdf";
 
 export default function CV() {
-  const { slug } = useParams();
   const [cvData, setCvData] = useState(null);
 
   const targetRef = useRef();
 
   useEffect(() => {
-    import(`@/data/cv/${slug}.js`)
+    import(`@/data/cv/aziz.js`)
       .then((mod) => setCvData(mod.cvData))
-      .catch(() => console.error(`Data CV untuk "${slug}" tidak ditemukan.`));
-  }, [slug]);
+      .catch(() => console.error(`Data CV untuk "aziz" tidak ditemukan.`));
+  }, []);
 
   if (!cvData)
     return (
       <div className="flex min-h-screen justify-center ">
-        <p className="text-[var(#555555]">Loading CV data...</p>
+        <p className="text-[var(--gray-primary)]">Loading CV data...</p>
       </div>
     );
 
   return (
     <div
-      ref={targetRef}
       className="max-w-2xl w-full mx-auto"
     >
       {/* Header */}
