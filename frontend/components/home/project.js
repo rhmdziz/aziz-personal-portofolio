@@ -2,11 +2,9 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Modal, Tag } from "antd";
+import { AnimatePresence, motion } from "framer-motion";
 import { projects } from "@/data/projects";
-import { GlobalOutlined } from "@ant-design/icons";
-import Link from "next/link";
+import ProjectModal from "./project-modal";
 
 export default function Project() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -17,15 +15,27 @@ export default function Project() {
   const sortedProjects = [...projects].sort((a, b) => b.id - a.id);
 
   return (
-    <div
+    <section
       id="project"
-      className="bg-[var(--background)] w-full relative flex justify-center"
+      className="w-full relative flex justify-center px-6 py-24 md:py-32"
     >
-      <div className="max-w-4xl w-full   px-6 md:px-0 relative mt-24">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-medium  text-[var(--gray-primary)] ">
-          Some of my project
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 mb-4">
+      <div className="max-w-5xl w-full relative">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div className="max-w-2xl">
+            <p className="text-sm font-medium uppercase tracking-[0.24em] text-[var(--purple)]">
+              Projects
+            </p>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-medium text-[var(--gray-primary)]">
+              Selected work across mobile apps and web experiences.
+            </h2>
+          </div>
+          <p className="max-w-md text-[var(--gray-secondary)] text-base leading-7">
+            A small set of projects that reflect how I approach product
+            thinking, interface polish, and implementation detail.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
           {sortedProjects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -33,27 +43,30 @@ export default function Project() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               onClick={() => handleOpen(project)}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.12 }}
             >
-              <div className="bg-white rounded-md shadow-md hover:shadow-lg hover:-translate-y-1 transition duration-200 overflow-hidden cursor-pointer">
-                <div className="relative w-full sm:h-[220px] h-[180px] overflow-hidden ">
+              <div className="group bg-white/85 rounded-[1.75rem] border border-[var(--line)] shadow-[0_20px_60px_rgba(17,32,49,0.08)] hover:-translate-y-1.5 transition duration-300 overflow-hidden cursor-pointer backdrop-blur-sm">
+                <div className="relative w-full sm:h-[220px] h-[200px] overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
-                <div className="p-5">
-                  <h3 className="text-2xl font-medium text-[var(--gray-primary)] mb-2">
+                <div className="p-6">
+                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-[var(--purple)]">
+                    {project.role}
+                  </p>
+                  <h3 className="text-2xl font-medium text-[var(--gray-primary)] mt-3 mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-[var(--gray-secondary)]  tracking-wide mb-1">
+                  <p className="text-sm text-[var(--gray-secondary)] tracking-wide mb-3">
                     {project.date}
                   </p>
-                  <p className="text-sm text-[var(--gray-secondary)] ">
-                    {project.role}
+                  <p className="text-sm text-[var(--gray-secondary)] line-clamp-3 leading-6">
+                    {project.description}
                   </p>
                 </div>
               </div>
@@ -62,70 +75,11 @@ export default function Project() {
         </div>
       </div>
 
-      <Modal
-        open={!!selectedProject}
-        onCancel={handleClose}
-        footer={null}
-        centered
-        width={700}
-        styles={{
-          header: { display: "none" },
-          body: {
-            padding: 0,
-            fontFamily: "var(--font-dm-sans)",
-            maxHeight: "80vh",
-            overflowY: "auto",
-          },
-        }}
-      >
+      <AnimatePresence>
         {selectedProject && (
-          <div className="px-2 py-4">
-            <div className="relative w-full h-[220px] sm:h-[340px] mb-4 rounded-xl overflow-hidden">
-              <Image
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="flex justify-between mb-2 items-center">
-              <h2 className="text-2xl font-medium text-[var(--gray-primary)]">
-                {selectedProject.title}
-              </h2>
-              <div className="text-[var(--purple)]">
-                <Link
-                  href={selectedProject.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xl cursor-pointer"
-                >
-                  <GlobalOutlined style={{ color: "var(--purple)" }} />
-                </Link>
-              </div>
-            </div>
-            <p className="text-sm text-[var(--gray-secondary)]">
-              {selectedProject.role} | {selectedProject.date}
-            </p>
-
-            <p className="mt-3 text-base text-[var(--gray-secondary)] leading-relaxed">
-              {selectedProject.description}
-            </p>
-
-            {selectedProject.tech && (
-              <div className="mt-4 flex flex-wrap gap-2">
-                {selectedProject.tech.map((t, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-lg text-xs font-medium py-1 px-3 border-2 border-[var(--purple)] text-[var(--purple)]"
-                  >
-                    <p>{t}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <ProjectModal project={selectedProject} onClose={handleClose} />
         )}
-      </Modal>
-    </div>
+      </AnimatePresence>
+    </section>
   );
 }

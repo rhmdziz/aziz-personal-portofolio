@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -58,6 +60,11 @@
   .ant-drawer * {
     font-family: var(--font-dm-sans), sans-serif !important;
   }
+
+  .font-cursive {
+    font-family: 'Playwrite US Modern', cursive !important;
+  }
+
   .swiper-button-next,
   .swiper-button-prev {
     color: #fff !important;

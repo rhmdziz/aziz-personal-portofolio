@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Button from "../button";
@@ -12,69 +11,105 @@ export default function Hero() {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % roles.length);
     }, 2500);
+
     return () => clearInterval(timer);
   }, [roles.length]);
 
   return (
-    <div className="bg-[var(--background)] w-full relative flex justify-center">
-      <div className="max-w-4xl w-full min-h-screen flex flex-col-reverse md:flex-row justify-center md:justify-between items-center px-6 md:px-0 relative">
-        <div className="text-left ">
-          <h1 className="text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-[var(--gray-primary)]">
-            Hi, I&lsquo;m a
-            <br />
-            <span className="text-[var(--purple)]">
+    <section className="w-full relative flex justify-center px-6 pt-20 sm:pt-24 md:pt-28">
+      <div className="max-w-5xl w-full flex flex-col-reverse md:flex-row justify-center md:justify-between items-center md:items-start gap-2 md:gap-14 relative">
+        <div className="text-left max-w-2xl">
+          <div className="inline-flex items-center rounded-full border border-[var(--line)] bg-white/70 px-4 py-2 text-sm text-[var(--gray-secondary)] backdrop-blur-sm">
+            Based in Indonesia, building mobile and web products
+          </div>
+          <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-[4.6rem] leading-[0.98] font-medium text-[var(--gray-primary)]">
+            Building
+            <span className="block text-[var(--purple)] min-h-[1.15em]">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={roles[index]}
-                  initial={{ y: -30, opacity: 0 }}
+                  initial={{ y: 24, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, ease: "easeIn" }}
+                  exit={{ y: -24, opacity: 0 }}
+                  transition={{ duration: 0.45, ease: "easeOut" }}
                   className="inline-block"
                 >
                   {roles[index]}
                 </motion.span>
               </AnimatePresence>
-              <br /> Developer
+              <span className="text-[var(--gray-primary)]"> products</span>
             </span>
+            with clarity.
           </h1>
-          <p className="mt-4 md:mt-8 text-[var(--gray-secondary)] text-base sm:text-lg max-w-md mx-auto md:mx-0">
-            A passionate student from Universitas Prasetiya Mulya who loves
-            creating mobile and web applications.
+          <p className="mt-6 text-[var(--gray-secondary)] text-base sm:text-lg max-w-xl">
+            Aziz is a Digital Business Technology student at Universitas
+            Prasetiya Mulya with a strong focus on interface clarity, reliable
+            engineering, and products that feel effortless to use.
           </p>
 
-          <Button
-            variant="fill"
-            href="#about"
-            className="mt-4 md:mt-8 mb-4 md:mb-0"
-          >
-            Get to know me!
-          </Button>
-        </div>
-        <div className="mb-8 md:mb-0 relative">
-          <Image
-            src="/images/art.png"
-            alt="Profile Picture"
-            width={600}
-            height={800}
-            className="mx-auto rounded-2xl object-cover z-10 relative"
-          />
-          <div className="md:h-32"></div>
+          <div className="mt-8 flex flex-row items-stretch gap-3 w-full max-w-md sm:max-w-none">
+            <Button
+              variant="fill"
+              href="#project"
+              className="min-h-12 sm:min-h-14 flex-1 sm:flex-none px-4 sm:px-6 text-sm sm:text-base"
+            >
+              View selected work
+            </Button>
+            <Button
+              href="#contact"
+              className="min-h-12 sm:min-h-14 flex-1 sm:flex-none px-4 sm:px-6 text-sm sm:text-base"
+            >
+              Start a conversation
+            </Button>
+          </div>
 
-          <div className="hidden md:block absolute top-12 right-12 w-44 z-0 h-80 bg-[var(--purple)] pointer-events-none"></div>
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-xl">
+            {[
+              { value: "10+", label: "Tools used across web and mobile" },
+              { value: "5", label: "Featured projects shipped" },
+              { value: "2024", label: "Since actively building products" },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-2xl border border-[var(--line)] bg-white/75 px-4 py-4 backdrop-blur-sm"
+              >
+                <p className="text-2xl font-medium text-[var(--gray-primary)]">
+                  {item.value}
+                </p>
+                <p className="mt-1 text-sm leading-5 text-[var(--gray-secondary)]">
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-8 md:mb-0 md:self-center md:-translate-y-[4.5rem] relative w-full max-w-md">
+          <div className="absolute inset-x-10 top-8 bottom-10 rounded-[2rem] bg-[var(--purple-soft)] blur-3xl"></div>
+          <div className="absolute -left-6 top-12 h-24 w-24 rounded-full bg-[#f6dba7] opacity-80 blur-2xl"></div>
+          <div className="absolute -right-2 bottom-16 h-28 w-28 rounded-full bg-[var(--purple-soft)] opacity-90 blur-2xl"></div>
+          <div className="relative rounded-[2rem] border border-white/70 bg-white/55 p-4 shadow-[0_30px_80px_rgba(17,32,49,0.14)] backdrop-blur-md">
+            <div className="absolute left-5 top-5 rounded-full bg-[var(--background)]/90 px-3 py-1 text-xs text-[var(--gray-secondary)] backdrop-blur-sm">
+              Full stack • Mobile • Frontend
+            </div>
+            <Image
+              src="/images/art.png"
+              alt="Profile Picture"
+              width={600}
+              height={800}
+              className="mx-auto rounded-[1.5rem] object-cover z-10 relative"
+            />
+          </div>
+          <div className="hidden md:block absolute md:left-auto md:right-auto md:-left-4 md:bottom-6 rounded-2xl border border-[var(--line)] bg-white px-4 py-3 shadow-[0_18px_50px_rgba(17,32,49,0.08)]">
+            <p className="text-xs uppercase tracking-[0.24em] text-[var(--gray-secondary)]">
+              Focus
+            </p>
+            <p className="mt-1 text-sm font-medium text-[var(--gray-primary)]">
+              Mobile apps, product UI, web systems
+            </p>
+          </div>
         </div>
       </div>
-      <svg
-        className="absolute -bottom-40 pointer-events-none"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1440 320"
-      >
-        <path
-          fill="#673DE6"
-          fillOpacity="1"
-          d="M0,32L0,96L110.8,96L110.8,128L221.5,128L221.5,64L332.3,64L332.3,224L443.1,224L443.1,288L553.8,288L553.8,160L664.6,160L664.6,224L775.4,224L775.4,192L886.2,192L886.2,192L996.9,192L996.9,160L1107.7,160L1107.7,64L1218.5,64L1218.5,128L1329.2,128L1329.2,224L1440,224L1440,320L1329.2,320L1329.2,320L1218.5,320L1218.5,320L1107.7,320L1107.7,320L996.9,320L996.9,320L886.2,320L886.2,320L775.4,320L775.4,320L664.6,320L664.6,320L553.8,320L553.8,320L443.1,320L443.1,320L332.3,320L332.3,320L221.5,320L221.5,320L110.8,320L110.8,320L0,320L0,320Z"
-        ></path>
-      </svg>
-    </div>
+    </section>
   );
 }
