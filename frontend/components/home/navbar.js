@@ -47,7 +47,7 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center gap-4 md:gap-12">
-          <a href="#" className="text-2xl font-medium shrink-0">
+          <a href="/#home" className="text-2xl font-medium shrink-0">
             <p className="py-2 pr-3">
               <span className="text-[var(--purple)]">Az</span>
               <span className="text-[var(--gray-primary)]">iz Rahmad</span>

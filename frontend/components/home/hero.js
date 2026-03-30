@@ -16,7 +16,7 @@ export default function Hero() {
   }, [roles.length]);
 
   return (
-    <section className="w-full relative flex justify-center px-6 pt-20 sm:pt-24 md:pt-28">
+    <section id="home" className="w-full relative flex justify-center px-6 pt-20 sm:pt-24 md:pt-28">
       <div className="max-w-5xl w-full flex flex-col-reverse md:flex-row justify-center md:justify-between items-center md:items-start gap-2 md:gap-14 relative">
         <div className="text-left max-w-2xl">
           <div className="inline-flex items-center rounded-full border border-[var(--line)] bg-white/70 px-4 py-2 text-sm text-[var(--gray-secondary)] backdrop-blur-sm">
