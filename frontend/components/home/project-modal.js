@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +11,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 export default function ProjectModal({ project, onClose }) {
   const [mounted, setMounted] = useState(false);
   const isMobile = useIsMobile();
+  const sheetScrollRef = useRef(null);
 
   useEffect(() => {
     setMounted(true);
@@ -35,6 +36,36 @@ export default function ProjectModal({ project, onClose }) {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [project, onClose]);
+
+  useEffect(() => {
+    if (!isMobile || !sheetScrollRef.current) return;
+
+    let startY = 0;
+    const touchTarget = sheetScrollRef.current;
+
+    const onTouchStart = (event) => {
+      if (event.touches.length !== 1) return;
+      startY = event.touches[0].clientY;
+    };
+
+    const onTouchMove = (event) => {
+      if (event.touches.length !== 1) return;
+      const currentY = event.touches[0].clientY;
+      const deltaY = currentY - startY;
+
+      if (deltaY > 80 && touchTarget.scrollTop <= 0) {
+        onClose();
+      }
+    };
+
+    touchTarget.addEventListener("touchstart", onTouchStart, { passive: true });
+    touchTarget.addEventListener("touchmove", onTouchMove, { passive: true });
+
+    return () => {
+      touchTarget.removeEventListener("touchstart", onTouchStart);
+      touchTarget.removeEventListener("touchmove", onTouchMove);
+    };
+  }, [isMobile, onClose]);
 
   if (!mounted || !project) return null;
 
@@ -71,7 +102,10 @@ export default function ProjectModal({ project, onClose }) {
           transition={{ duration: 0.28, ease: "easeOut" }}
           className="mx-auto flex max-h-[88vh] w-full max-w-[760px] flex-col overflow-hidden rounded-t-[1.9rem] border border-[var(--line)] bg-white shadow-[0_-20px_60px_rgba(17,32,49,0.18)] md:max-h-[85vh] md:w-[min(760px,calc(100vw-2rem))] md:rounded-[1.75rem]"
         >
-          <div className="overflow-y-auto px-6 pt-6 pb-24 md:p-6">
+          <div
+            ref={sheetScrollRef}
+            className="overflow-y-auto px-6 pt-6 pb-24 md:p-6"
+          >
             <div className="relative h-[180px] w-full overflow-hidden rounded-[1.2rem] sm:h-[240px] md:h-[340px] md:rounded-[1.5rem]">
               <Image
                 src={project.image}
