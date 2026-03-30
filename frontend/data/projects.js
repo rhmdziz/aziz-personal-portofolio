@@ -1,5 +1,16 @@
 export const projects = [
   {
+    id: 6,
+    role: "Frontend Developer",
+    title: "SelunaTech",
+    description:
+      "A modern landing page for SelunaTech, showcasing their services and expertise in software development.",
+    image: "/images/project/selunatech.png",
+    date: "March 2026",
+    tech: ["Next.js", "Tailwind CSS"],
+    link: "selunatech-site.vercel.app",
+  },
+  {
     id: 5,
     role: "Mobile Developer",
     title: "KDMP Mobile",
