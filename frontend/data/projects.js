@@ -1,5 +1,16 @@
 export const projects = [
   {
+    id: 7,
+    role: "Frontend Developer",
+    title: "Rumah Belajar Abi Sakinah",
+    description:
+      "A modern landing page for Rumah Belajar Abi Sakinah, showcasing their educational services and resources for students and teachers.",
+    image: "/images/project/rbas.png",
+    date: "April 2026",
+    tech: ["Next.js", "Tailwind CSS"],
+    link: "https://rbas-topaz.vercel.app/",
+  },
+  {
     id: 6,
     role: "Frontend Developer",
     title: "SelunaTech",
@@ -8,7 +19,7 @@ export const projects = [
     image: "/images/project/selunatech.png",
     date: "March 2026",
     tech: ["Next.js", "Tailwind CSS"],
-    link: "selunatech-site.vercel.app",
+    link: "https://selunatech-site.vercel.app",
   },
   {
     id: 5,
