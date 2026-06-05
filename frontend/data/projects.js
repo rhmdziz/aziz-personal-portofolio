@@ -22,6 +22,17 @@ export const projects = [
   //   link: "https://selunatech-site.vercel.app",
   // },
   {
+    id: 6,
+    role: "Full Stack Developer",
+    title: "CSL USE",
+    description:
+      "This project involves the redevelopment of the laboratory management system for the Collaborative STEM Laboratories at Universitas Prasetiya Mulya, introducing a modernized user interface and user experience (UI/UX). The upgraded system incorporates essential enhancements, including automated schedule conflict detection, equipment borrowing management, and centralized inventory tracking. Additionally, it integrates digital laboratory clearance workflows and a centralized information management hub to significantly streamline and improve overall laboratory operations.",
+    image: "/images/project/csl.png",
+    date: "January - June 2026",
+    tech: ["Django", "React.js", "Tailwind CSS"],
+    link: "https://csl-use.prasetiyamulya.ac.id/",
+  },
+  {
     id: 5,
     role: "Mobile Developer",
     title: "KDMP Mobile",
