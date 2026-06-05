@@ -5,7 +5,7 @@ export const experiences = [
     company: "Takodam",
   },
   {
-    period: "Sep 2025 – Dec 2026",
+    period: "Sep 2025 – Dec 2025",
     title: "Coding Teacher",
     company: "Timedoor Academy",
   },
