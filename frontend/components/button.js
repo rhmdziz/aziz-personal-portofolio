@@ -11,13 +11,13 @@ export default function Button({
   className = "",
 }) {
   const baseClass = `
-    inline-flex items-center justify-center cursor-pointer rounded-full font-medium transition-all duration-200
+    inline-flex items-center justify-center cursor-pointer rounded-full font-medium transition-all duration-300
   `;
 
   const variantClass =
     variant === "fill"
-      ? "bg-[var(--gray-primary)] text-[var(--background)] py-3.5 px-6 shadow-[0_16px_40px_rgba(17,32,49,0.12)] hover:bg-[var(--purple)] hover:translate-y-[-2px]"
-      : "border border-[var(--line)] bg-white/80 text-[var(--gray-primary)] px-4 py-2.5 backdrop-blur-sm hover:border-[var(--purple)] hover:text-[var(--purple)] hover:translate-y-[-2px]";
+      ? "border border-[#8c68f0] bg-[linear-gradient(180deg,#7b52ee_0%,#673DE6_100%)] px-6 py-3.5 text-white shadow-[0_20px_45px_rgba(103,61,230,0.28)] hover:-translate-y-0.5 hover:shadow-[0_24px_55px_rgba(103,61,230,0.34)]"
+      : "border border-[rgba(127,145,172,0.4)] bg-white px-4 py-2.5 text-[var(--gray-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] backdrop-blur-xl hover:-translate-y-0.5 hover:border-[#b59af6] hover:bg-white hover:text-[var(--purple)]";
 
   const combinedClass = `${baseClass} ${variantClass} ${className}`;
 

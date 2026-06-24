@@ -16,97 +16,85 @@ export default function Hero() {
   }, [roles.length]);
 
   return (
-    <section id="home" className="w-full relative flex justify-center px-6 pt-20 sm:pt-24 md:pt-28">
-      <div className="max-w-5xl w-full flex flex-col-reverse md:flex-row justify-center md:justify-between items-center md:items-start gap-2 md:gap-14 relative">
-        <div className="text-left max-w-2xl">
-          <div className="inline-flex items-center rounded-full border border-[var(--line)] bg-white/70 px-4 py-2 text-sm text-[var(--gray-secondary)] backdrop-blur-sm">
-            Based in Indonesia, building mobile and web products
-          </div>
-          <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-[4.6rem] leading-[0.98] font-medium text-[var(--gray-primary)]">
-            Building
-            <span className="block text-[var(--purple)] min-h-[1.15em]">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={roles[index]}
-                  initial={{ y: 24, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -24, opacity: 0 }}
-                  transition={{ duration: 0.45, ease: "easeOut" }}
-                  className="inline-block"
-                >
-                  {roles[index]}
-                </motion.span>
-              </AnimatePresence>
-              <span className="text-[var(--gray-primary)]"> products</span>
-            </span>
-            with clarity.
-          </h1>
-          <p className="mt-6 text-[var(--gray-secondary)] text-base sm:text-lg max-w-xl">
-            Aziz is a Digital Business Technology student at Universitas
-            Prasetiya Mulya with a strong focus on interface clarity, reliable
-            engineering, and products that feel effortless to use.
-          </p>
-
-          <div className="mt-8 flex flex-row items-stretch gap-3 w-full max-w-md sm:max-w-none">
-            <Button
-              variant="fill"
-              href="#project"
-              className="min-h-12 sm:min-h-14 flex-1 sm:flex-none px-4 sm:px-6 text-sm sm:text-base"
-            >
-              View selected work
-            </Button>
-            <Button
-              href="#contact"
-              className="min-h-12 sm:min-h-14 flex-1 sm:flex-none px-4 sm:px-6 text-sm sm:text-base"
-            >
-              Start a conversation
-            </Button>
-          </div>
-
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-xl">
-            {[
-              { value: "10+", label: "Tools used across web and mobile" },
-              { value: "5", label: "Featured projects shipped" },
-              { value: "2024", label: "Since actively building products" },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="rounded-2xl border border-[var(--line)] bg-white/75 px-4 py-4 backdrop-blur-sm"
-              >
-                <p className="text-2xl font-medium text-[var(--gray-primary)]">
-                  {item.value}
-                </p>
-                <p className="mt-1 text-sm leading-5 text-[var(--gray-secondary)]">
-                  {item.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mb-8 md:mb-0 md:self-center md:-translate-y-[4.5rem] relative w-full max-w-md">
-          <div className="absolute inset-x-10 top-8 bottom-10 rounded-[2rem] bg-[var(--purple-soft)] blur-3xl"></div>
-          <div className="absolute -left-6 top-12 h-24 w-24 rounded-full bg-[#f6dba7] opacity-80 blur-2xl"></div>
-          <div className="absolute -right-2 bottom-16 h-28 w-28 rounded-full bg-[var(--purple-soft)] opacity-90 blur-2xl"></div>
-          <div className="relative rounded-[2rem] border border-white/70 bg-white/55 p-4 shadow-[0_30px_80px_rgba(17,32,49,0.14)] backdrop-blur-md">
-            <div className="absolute left-5 top-5 rounded-full bg-[var(--background)]/90 px-3 py-1 text-xs text-[var(--gray-secondary)] backdrop-blur-sm">
-              Full stack • Mobile • Frontend
+    <section
+      id="home"
+      className="relative flex w-full justify-center px-6 pt-24 sm:pt-28 md:pt-32"
+    >
+      <div className="section-shell">
+        <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1.08fr)_minmax(300px,0.92fr)] md:gap-10">
+          <div className="order-2 max-w-2xl text-left md:order-1">
+            <div className="ios-chip">
+              Based in BSD City, Indonesia
             </div>
+            <h1 className="mt-6 text-4xl font-medium leading-[0.94] tracking-[-0.05em] text-[var(--gray-primary)] sm:text-5xl md:text-6xl lg:text-[4.8rem]">
+              Calm interfaces.
+                <span className="mt-2 block min-h-[1.12em] text-[var(--purple)]">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={roles[index]}
+                      initial={{ opacity: 0, filter: "blur(6px)" }}
+                      animate={{ opacity: 1, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, filter: "blur(6px)" }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                      className="inline-block"
+                    >
+                      {roles[index]}
+                  </motion.span>
+                </AnimatePresence>
+                <span className="text-[var(--gray-primary)]"> systems.</span>
+              </span>
+            </h1>
+            <p className="section-copy mt-6 max-w-xl">
+              Aziz is a Digital Business Technology student at Universitas
+              Prasetiya Mulya, focused on clean interfaces, dependable
+              engineering, and products that feel easy to use.
+            </p>
+
+            <div className="mt-8 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row">
+              <Button
+                variant="fill"
+                href="#project"
+                className="min-h-12 flex-1 px-4 text-sm sm:min-h-14 sm:flex-none sm:px-6 sm:text-base"
+              >
+                View projects
+              </Button>
+              <Button
+                href="#contact"
+                className="min-h-12 flex-1 px-4 text-sm sm:min-h-14 sm:flex-none sm:px-6 sm:text-base"
+              >
+                Let&apos;s talk
+              </Button>
+            </div>
+
+            <div className="mt-10 grid max-w-xl grid-cols-2 gap-4 sm:grid-cols-3">
+              {[
+                { value: "10+", label: "Tools across web and mobile" },
+                { value: "5", label: "Selected projects launched" },
+                { value: "2024", label: "Building actively since" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="ios-panel rounded-[1.6rem] px-4 py-4"
+                >
+                  <p className="text-2xl font-medium tracking-[-0.04em] text-[var(--gray-primary)]">
+                    {item.value}
+                  </p>
+                  <p className="mt-1 text-sm leading-5 text-[var(--gray-secondary)]">
+                    {item.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="order-1 relative flex min-h-[18rem] items-end justify-center rounded-[2rem] px-2 pt-2 sm:min-h-[22rem] md:order-2 md:min-h-[42rem] md:pt-8">
             <Image
               src="/images/art.png"
               alt="Profile Picture"
-              width={600}
-              height={800}
-              className="mx-auto rounded-[1.5rem] object-cover z-10 relative"
+              width={700}
+              height={900}
+              className="relative z-10 mx-auto h-[18rem] w-auto max-w-full scale-105 object-contain sm:h-[22rem] sm:scale-110 md:h-[40rem] md:scale-[1.18]"
             />
-          </div>
-          <div className="hidden md:block absolute md:left-auto md:right-auto md:-left-4 md:bottom-6 rounded-2xl border border-[var(--line)] bg-white px-4 py-3 shadow-[0_18px_50px_rgba(17,32,49,0.08)]">
-            <p className="text-xs uppercase tracking-[0.24em] text-[var(--gray-secondary)]">
-              Focus
-            </p>
-            <p className="mt-1 text-sm font-medium text-[var(--gray-primary)]">
-              Mobile apps, product UI, web systems
-            </p>
           </div>
         </div>
       </div>

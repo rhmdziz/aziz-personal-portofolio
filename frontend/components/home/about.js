@@ -10,25 +10,21 @@ export default function About() {
   return (
     <section
       id="about"
-      className="w-full relative flex justify-center px-6 py-24 md:py-32"
+      className="relative flex w-full justify-center px-6 py-24 md:py-32"
     >
-      <div className="max-w-5xl w-full relative">
-        <div className="rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-8 md:p-10 shadow-[0_30px_80px_rgba(17,32,49,0.08)]">
-          <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] gap-x-12 md:gap-x-16 gap-y-6 md:gap-y-5">
+      <div className="section-shell">
+        <div className="ios-panel overflow-hidden rounded-[2.5rem] p-6 sm:p-8 md:p-10">
+          <div className="grid grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.85fr)] md:gap-x-16">
             <div className="order-1 max-w-2xl">
-              <p className="text-sm font-medium uppercase tracking-[0.24em] text-[var(--purple)]">
-                About
-              </p>
-              <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-medium text-[var(--gray-primary)]">
-                Building practical products with a calm visual eye.
+              <p className="section-kicker">About</p>
+              <h2 className="section-title">
+                Building useful products with a calm visual eye.
               </h2>
             </div>
 
             <div className="order-3 md:order-2 md:row-span-2">
               <div className="max-w-3xl w-full flex flex-col relative">
-                <p className="text-sm font-medium uppercase tracking-[0.22em] text-[var(--purple)]">
-                  Experience
-                </p>
+                <p className="section-kicker">Experience</p>
                 <div className="absolute left-[7px] top-10 bottom-2 w-px bg-[var(--line)]"></div>
 
                 <div className="mt-6">
@@ -43,10 +39,10 @@ export default function About() {
                         delay: index * 0.12,
                         ease: "easeOut",
                       }}
-                      className="flex items-start gap-5 relative mb-7"
+                      className="relative mb-7 flex items-start gap-5"
                     >
                       <div className="relative z-10 mt-1.5">
-                        <div className="w-3 h-3 bg-[var(--purple)] rounded-full"></div>
+                        <div className="h-3 w-3 rounded-full bg-[var(--purple)]"></div>
                       </div>
 
                       <div>
@@ -77,34 +73,35 @@ export default function About() {
                 spaceBetween={20}
                 slidesPerView={1}
                 loop={true}
-                className="rounded-[1.5rem] overflow-hidden"
+                className="overflow-hidden rounded-[1.9rem]"
               >
                 {["1.png", "2.png", "3.png", "4.png", "5.png"].map((img, i) => (
                   <SwiperSlide key={i}>
-                    <div className="relative w-full h-[250px] md:h-[340px]">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[1.9rem] md:aspect-[16/9]">
                       <Image
                         src={`/images/about/${img}`}
                         alt={`About ${i + 1}`}
                         fill
-                        className="object-cover rounded-[1.5rem]"
+                        className="object-cover"
                       />
+                      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#10203a]/28 to-transparent" />
                     </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <p className="mt-6 text-[var(--gray-secondary)] text-base sm:text-lg">
-                I am an undergraduate student majoring in Digital Business
-                Technology at Universitas Prasetiya Mulya.
+              <p className="section-copy mt-6">
+                I study Digital Business Technology at Universitas Prasetiya
+                Mulya.
               </p>
-              <p className="mt-4 text-[var(--gray-secondary)] text-base sm:text-lg">
-                My journey began with curiosity about how mobile and web
-                applications are built, which soon evolved into a strong drive
-                to design and develop useful digital solutions.
+              <p className="section-copy mt-4">
+                What started as curiosity about mobile and web products grew
+                into a strong interest in designing and building digital
+                experiences that solve real problems.
               </p>
-              <p className="mt-4 text-[var(--gray-secondary)] text-base sm:text-lg">
-                Through university projects and independent learning,
-                I&lsquo;ve honed my skills in mobile development and modern web
-                technologies while keeping usability and clarity at the center.
+              <p className="section-copy mt-4">
+                Through academic projects and independent learning, I&lsquo;ve
+                developed a solid foundation in mobile development and modern
+                web technology, with usability and clarity at the center.
               </p>
             </div>
           </div>

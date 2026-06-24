@@ -49,38 +49,34 @@ export default function Contact() {
       <Toaster position="bottom-center" reverseOrder={false} />
       <section
         id="contact"
-        className="relative w-full flex justify-center px-6 py-24 md:pt-28"
+        className="relative flex w-full justify-center px-6 py-24 md:pt-28"
       >
-        <div className="max-w-5xl w-full relative">
+        <div className="section-shell">
           <div className="max-w-2xl">
-            <p className="text-sm font-medium uppercase tracking-[0.24em] text-[var(--purple)]">
-              Contact
-            </p>
-            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-medium text-[var(--gray-primary)]">
-              Let&apos;s build something clear, useful, and memorable.
+            <p className="section-kicker">Contact</p>
+            <h2 className="section-title">
+              Let&apos;s build something thoughtful and useful.
             </h2>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-center md:justify-between mt-10 bg-white/80 items-center rounded-[2rem] border border-[var(--line)] shadow-[0_24px_70px_rgba(17,32,49,0.08)] overflow-hidden backdrop-blur-sm">
-            <div className="w-full md:w-[38%] flex justify-center md:justify-start ">
-              <div className="relative w-full h-[240px] sm:h-[280px] md:h-[640px] ">
+          <div className="ios-panel-strong mt-10 flex flex-col items-center justify-center overflow-hidden rounded-[2.5rem] md:flex-row md:justify-between">
+            <div className="flex w-full justify-center md:w-[38%] md:justify-start">
+              <div className="relative h-[240px] w-full overflow-hidden sm:h-[280px] md:h-[640px]">
                 <Image
                   src="/images/contact/me.jpeg"
                   alt="Contact me"
                   fill
-                  className="
-                  object-cover object-bottom md:object-center w-full h-full
-                  rounded-t-[2rem] md:rounded-t-none md:rounded-l-[2rem]
-                "
+                  className="h-full w-full object-cover object-bottom md:object-center"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#10203a]/18 via-transparent to-white/12" />
               </div>
             </div>
 
-            <div className="w-full md:w-[62%] flex flex-col justify-between p-6 md:p-10">
-              <p className="text-[var(--gray-secondary)] text-base leading-7 mb-6">
-                Whether you want to discuss a project, collaboration, or just
-                say hello, send a message and I&apos;ll get back to you.
+            <div className="flex w-full flex-col justify-between p-6 md:w-[62%] md:p-10">
+              <p className="section-copy mb-6">
+                If you have a project, collaboration, or idea to discuss, send
+                a message and I&apos;ll get back to you.
               </p>
               <form
                 onSubmit={handleSubmit}
@@ -88,34 +84,34 @@ export default function Contact() {
               >
                 <input
                   type="text"
-                  placeholder="Your Name"
+                  placeholder="Name"
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full border border-[var(--line)] bg-[var(--surface)] rounded-2xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[var(--ring)] transition"
+                  className="ios-input"
                 />
                 <input
                   type="email"
-                  placeholder="Your Email"
+                  placeholder="Email"
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full border border-[var(--line)] bg-[var(--surface)] rounded-2xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[var(--ring)] transition"
+                  className="ios-input"
                 />
                 <textarea
-                  placeholder="Your Message"
+                  placeholder="Message"
                   required
                   value={form.message}
                   onChange={(e) =>
                     setForm({ ...form, message: e.target.value })
                   }
-                  className="w-full border border-[var(--line)] bg-[var(--surface)] rounded-2xl px-4 py-3.5 h-44 resize-none focus:outline-none focus:ring-2 focus:ring-[var(--ring)] transition"
+                  className="ios-input h-44 resize-none"
                 ></textarea>
 
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="bg-[var(--gray-primary)] text-white rounded-full py-3.5 px-6 font-medium hover:bg-[var(--purple)] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="flex cursor-pointer items-center justify-center gap-2 rounded-full border border-[#8c68f0] bg-[linear-gradient(180deg,#7b52ee_0%,#673DE6_100%)] px-6 py-3.5 font-medium text-white shadow-[0_20px_45px_rgba(103,61,230,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_55px_rgba(103,61,230,0.34)] disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {isLoading ? (
                     <>
@@ -142,20 +138,20 @@ export default function Contact() {
                       <span>Sending...</span>
                     </>
                   ) : (
-                    "Send Message"
+                    "Send message"
                   )}
                 </button>
               </form>
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-center mt-6 gap-2">
-            <p className="text-[var(--gray-primary)] text-base md:text-lg">
-              Or reach me directly through{" "}
+          <div className="mt-6 flex flex-col items-center justify-center gap-2 md:flex-row">
+            <p className="text-base text-[var(--gray-primary)] md:text-lg">
+              Or email me directly at{" "}
             </p>
             <Link
               href="mailto:halo@azizrahmad.com"
-              className="text-[var(--purple)] font-medium"
+              className="font-medium text-[var(--purple)]"
             >
               halo@azizrahmad.com
             </Link>

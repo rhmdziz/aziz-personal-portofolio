@@ -1,4 +1,3 @@
-import { DM_Sans } from "next/font/google";
 import Script from "next/script";
 import "../styles/globals.css";
 
@@ -40,16 +39,10 @@ export const metadata = {
   },
 };
 
-const fontDM_Sans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-dm-sans",
-});
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={` ${fontDM_Sans.variable} antialiased`}>
+      <body className="antialiased">
         {children}
         <Script
           id="schema-person"

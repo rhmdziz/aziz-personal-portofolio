@@ -17,25 +17,23 @@ export default function Project() {
   return (
     <section
       id="project"
-      className="w-full relative flex justify-center px-6 py-24 md:py-32"
+      className="relative flex w-full justify-center px-6 py-24 md:py-32"
     >
-      <div className="max-w-5xl w-full relative">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div className="section-shell">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="text-sm font-medium uppercase tracking-[0.24em] text-[var(--purple)]">
-              Projects
-            </p>
-            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-medium text-[var(--gray-primary)]">
-              Selected work across mobile apps and web experiences.
+            <p className="section-kicker">Projects</p>
+            <h2 className="section-title">
+              Selected work across mobile and web.
             </h2>
           </div>
-          <p className="max-w-md text-[var(--gray-secondary)] text-base leading-7">
-            A small set of projects that reflect how I approach product
-            thinking, interface polish, and implementation detail.
+          <p className="section-copy max-w-md">
+            A focused set of projects that reflects how I think about product,
+            interface quality, and implementation detail.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {sortedProjects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -45,29 +43,40 @@ export default function Project() {
               onClick={() => handleOpen(project)}
               transition={{ duration: 0.5, delay: index * 0.12 }}
             >
-              <div className="group bg-white/85 rounded-[1.75rem] border border-[var(--line)] shadow-[0_20px_60px_rgba(17,32,49,0.08)] hover:-translate-y-1.5 transition duration-300 overflow-hidden cursor-pointer backdrop-blur-sm">
-                <div className="relative w-full sm:h-[220px] h-[200px] overflow-hidden">
+              <div className="ios-panel-strong group cursor-pointer overflow-hidden rounded-[2rem] transition duration-300 hover:-translate-y-1.5">
+                <div className="relative h-[200px] w-full overflow-hidden sm:h-[220px]">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover transition-transform duration-500"
                   />
+                  <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#10203a]/24 to-transparent" />
                 </div>
 
                 <div className="p-6">
-                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-[var(--purple)]">
-                    {project.role}
-                  </p>
-                  <h3 className="text-2xl font-medium text-[var(--gray-primary)] mt-3 mb-2">
+                  <div className="mb-4 flex items-center justify-between gap-4">
+                    <p className="text-xs font-semibold text-[var(--purple)]">
+                      {project.role}
+                    </p>
+                    <span className="text-xs font-medium text-[var(--gray-secondary)]">
+                      {project.date}
+                    </span>
+                  </div>
+                  <h3 className="mb-3 text-2xl font-medium tracking-[-0.04em] text-[var(--gray-primary)]">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-[var(--gray-secondary)] tracking-wide mb-3">
-                    {project.date}
-                  </p>
-                  <p className="text-sm text-[var(--gray-secondary)] line-clamp-3 leading-6">
+                  <p className="line-clamp-3 text-sm leading-6 text-[var(--gray-secondary)]">
                     {project.description}
                   </p>
+                  <div className="mt-5 flex items-center justify-between">
+                    <span className="text-sm font-medium text-[var(--purple)]">
+                      View details
+                    </span>
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/55 bg-white/65 text-lg text-[var(--gray-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.74)]">
+                      ↗
+                    </span>
+                  </div>
                 </div>
               </div>
             </motion.div>
