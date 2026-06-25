@@ -54,6 +54,11 @@ export default function About() {
                         </p>
                         <p className="text-sm text-[var(--gray-secondary)]">
                           {exp.company}
+                          {exp.location ? (
+                            <span className="ml-2 text-[var(--purple)]/75">
+                              · {exp.location}
+                            </span>
+                          ) : null}
                         </p>
                       </div>
                     </motion.div>

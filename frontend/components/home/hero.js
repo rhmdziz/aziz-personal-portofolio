@@ -23,31 +23,29 @@ export default function Hero() {
       <div className="section-shell">
         <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1.08fr)_minmax(300px,0.92fr)] md:gap-10">
           <div className="order-2 max-w-2xl text-left md:order-1">
-            <div className="ios-chip">
-              Based in BSD City, Indonesia
-            </div>
+            <div className="ios-chip">Based in BSD City, Indonesia</div>
             <h1 className="mt-6 text-4xl font-medium leading-[0.94] tracking-[-0.05em] text-[var(--gray-primary)] sm:text-5xl md:text-6xl lg:text-[4.8rem]">
-              Calm interfaces.
-                <span className="mt-2 block min-h-[1.12em] text-[var(--purple)]">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={roles[index]}
-                      initial={{ opacity: 0, filter: "blur(6px)" }}
-                      animate={{ opacity: 1, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, filter: "blur(6px)" }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
-                      className="inline-block"
-                    >
-                      {roles[index]}
+              Building reliable
+              <span className="mt-2 block min-h-[1.12em] text-[var(--purple)]">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={roles[index]}
+                    initial={{ opacity: 0, filter: "blur(6px)" }}
+                    animate={{ opacity: 1, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, filter: "blur(6px)" }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="inline-block"
+                  >
+                    {roles[index]}
                   </motion.span>
                 </AnimatePresence>
                 <span className="text-[var(--gray-primary)]"> systems.</span>
               </span>
             </h1>
             <p className="section-copy mt-6 max-w-xl">
-              Aziz is a Digital Business Technology student at Universitas
-              Prasetiya Mulya, focused on clean interfaces, dependable
-              engineering, and products that feel easy to use.
+              Aziz builds thoughtful digital products with a focus on clear
+              interfaces, reliable engineering, and user experiences that feel
+              simple from the first interaction.
             </p>
 
             <div className="mt-8 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row">
@@ -69,8 +67,8 @@ export default function Hero() {
             <div className="mt-10 grid max-w-xl grid-cols-2 gap-4 sm:grid-cols-3">
               {[
                 { value: "10+", label: "Tools across web and mobile" },
-                { value: "5", label: "Selected projects launched" },
-                { value: "2024", label: "Building actively since" },
+                { value: "6+", label: "Selected projects launched" },
+                { value: "2022", label: "Building actively since" },
               ].map((item) => (
                 <div
                   key={item.label}

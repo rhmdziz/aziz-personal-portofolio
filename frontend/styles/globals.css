@@ -149,6 +149,15 @@
     color: var(--gray-primary);
     backdrop-filter: blur(14px);
   }
+
+  .modal-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .modal-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @theme inline {

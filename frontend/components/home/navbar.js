@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
+import Link from "next/link";
 
 import Button from "../button";
 import {
@@ -15,6 +16,8 @@ import {
   SheetContent,
   SheetTrigger,
 } from "../ui/sheet";
+
+const sectionIds = ["about", "project", "skill", "contact"];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,7 +28,6 @@ export default function Navbar() {
     { name: "Skills", href: "/#skill" },
     { name: "Contact", href: "/#contact" },
   ];
-  const sectionIds = ["about", "project", "skill", "contact"];
   const socialItems = [
     {
       name: "Email",
@@ -92,12 +94,15 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center gap-4 md:gap-12">
-          <a href="/#home" className="shrink-0 text-xl md:text-2xl font-medium">
+          <Link
+            href="/#home"
+            className="shrink-0 text-xl font-medium md:text-2xl"
+          >
             <p className="pr-3">
               <span className="text-[var(--purple)]">Az</span>
               <span className="text-[var(--gray-primary)]">iz Rahmad</span>
             </p>
-          </a>
+          </Link>
           <motion.ul
             layout
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
@@ -153,13 +158,14 @@ export default function Navbar() {
               <button
                 type="button"
                 aria-label="Open navigation menu"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/45 bg-white/55 text-[var(--gray-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] backdrop-blur-xl"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/45 bg-white/55 text-[var(--gray-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] backdrop-blur-xl transition hover:border-[#b59af6] hover:text-[var(--purple)]"
               >
                 <Menu className="h-5 w-5" />
               </button>
             </SheetTrigger>
             <SheetContent
               side="right"
+              closeButtonClassName={isScrolled ? "top-7 right-8" : "top-8 right-4"}
               className="h-dvh w-screen max-w-none border-l-0 bg-[rgba(244,248,255,0.72)] px-6 py-10 backdrop-blur-3xl"
             >
               <div className="flex h-full flex-col items-center justify-center">

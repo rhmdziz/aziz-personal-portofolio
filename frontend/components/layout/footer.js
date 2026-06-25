@@ -24,24 +24,30 @@ export default function Footer() {
               <MailOutlined className="text-base" />
               halo@azizrahmad.com
             </Link>
+            <Link
+              href="mailto:rahmadaziz288@gmail.com"
+              className="inline-flex items-center gap-3 rounded-full border border-[var(--line)] bg-white px-5 py-3 text-sm font-medium text-[var(--gray-primary)] transition hover:-translate-y-0.5 hover:border-[#b59af6] hover:text-[var(--purple)]"
+            >
+              <MailOutlined className="text-base" />
+              rahmadaziz288@gmail.com
+            </Link>
 
-              <Link
-                href="https://www.linkedin.com/in/azizrahmad"
-                target="_blank"
-                className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white px-4 py-2.5 text-sm font-medium text-[var(--gray-primary)] transition hover:-translate-y-0.5 hover:border-[#b59af6] hover:text-[var(--purple)]"
-              >
-                <LinkedinFilled className="text-base" />
-                LinkedIn
-              </Link>
-              <Link
-                href="https://github.com/rhmdziz"
-                target="_blank"
-                className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white px-4 py-2.5 text-sm font-medium text-[var(--gray-primary)] transition hover:-translate-y-0.5 hover:border-[#b59af6] hover:text-[var(--purple)]"
-              >
-                <GithubFilled className="text-base" />
-                GitHub
-              </Link>
-            
+            <Link
+              href="https://www.linkedin.com/in/azizrahmad"
+              target="_blank"
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white px-4 py-2.5 text-sm font-medium text-[var(--gray-primary)] transition hover:-translate-y-0.5 hover:border-[#b59af6] hover:text-[var(--purple)]"
+            >
+              <LinkedinFilled className="text-base" />
+              LinkedIn
+            </Link>
+            <Link
+              href="https://github.com/rhmdziz"
+              target="_blank"
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white px-4 py-2.5 text-sm font-medium text-[var(--gray-primary)] transition hover:-translate-y-0.5 hover:border-[#b59af6] hover:text-[var(--purple)]"
+            >
+              <GithubFilled className="text-base" />
+              GitHub
+            </Link>
           </div>
         </div>
 
@@ -51,7 +57,7 @@ export default function Footer() {
             with care.
           </p>
           <p className="font-medium tracking-[-0.02em] text-[var(--gray-primary)]">
-            Indonesia
+            BSD City, Indonesia
           </p>
         </div>
       </div>

@@ -9,13 +9,18 @@ import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const techIconMap = {
+  "Google Maps API": "/icons/maps.png",
+  Docker: "/icons/docker.png",
+  Figma: "/icons/figma.png",
+  PostgreSQL: "/icons/posgresql.png",
+  "TensorFlow Lite": "/icons/tflite.png",
   "React.js": "/icons/react.png",
   "Tailwind CSS": "/icons/tailwind.png",
   Flutter: "/icons/flutter.png",
   Django: "/icons/django.png",
   "Django REST Framework": "/icons/djangorest.png",
   Kotlin: "/icons/kotlin.png",
-  Figma: "/icons/figma.png",
+  MQTT: "/icons/mqtt.png",
 };
 
 function getTechFallbackLabel(tech) {
@@ -29,8 +34,25 @@ function getTechFallbackLabel(tech) {
 
 export default function ProjectModal({ project, onClose }) {
   const [mounted, setMounted] = useState(false);
+  const [scrollIndicator, setScrollIndicator] = useState({
+    visible: false,
+    height: 0,
+    offset: 0,
+  });
   const isMobile = useIsMobile();
   const sheetScrollRef = useRef(null);
+  const detailIntro = project?.detailIntro?.trim();
+  const detailPoints = [
+    ...(project?.detailPoints?.filter((item) => item?.content?.trim()) ?? []),
+    ...(project?.tech?.length
+      ? [
+          {
+            title: "Tech Stack",
+            techItems: project.tech,
+          },
+        ]
+      : []),
+  ];
 
   useEffect(() => {
     setMounted(true);
@@ -86,6 +108,59 @@ export default function ProjectModal({ project, onClose }) {
     };
   }, [isMobile, onClose]);
 
+  useEffect(() => {
+    if (!project || !sheetScrollRef.current) return;
+
+    const scrollElement = sheetScrollRef.current;
+
+    const updateScrollIndicator = () => {
+      const { scrollTop, scrollHeight, clientHeight } = scrollElement;
+      const hasOverflow = scrollHeight > clientHeight + 8;
+
+      if (!hasOverflow) {
+        setScrollIndicator({
+          visible: false,
+          height: 0,
+          offset: 0,
+        });
+        return;
+      }
+
+      const trackHeight = Math.max(clientHeight - 32, 80);
+      const thumbHeight = Math.max(
+        (clientHeight / scrollHeight) * trackHeight,
+        52,
+      );
+      const maxThumbOffset = trackHeight - thumbHeight;
+      const scrollProgress = scrollTop / (scrollHeight - clientHeight);
+
+      setScrollIndicator({
+        visible: true,
+        height: thumbHeight,
+        offset: maxThumbOffset * scrollProgress,
+      });
+    };
+
+    updateScrollIndicator();
+
+    scrollElement.addEventListener("scroll", updateScrollIndicator, {
+      passive: true,
+    });
+    window.addEventListener("resize", updateScrollIndicator);
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateScrollIndicator();
+    });
+
+    resizeObserver.observe(scrollElement);
+
+    return () => {
+      scrollElement.removeEventListener("scroll", updateScrollIndicator);
+      window.removeEventListener("resize", updateScrollIndicator);
+      resizeObserver.disconnect();
+    };
+  }, [project]);
+
   if (!mounted || !project) return null;
 
   const panelAnimation = isMobile
@@ -119,110 +194,122 @@ export default function ProjectModal({ project, onClose }) {
           animate={panelAnimation.animate}
           exit={panelAnimation.exit}
           transition={{ duration: 0.28, ease: "easeOut" }}
-          className="mx-auto flex max-h-[92vh] w-full max-w-[760px] flex-col overflow-hidden rounded-t-[1.9rem] border border-[var(--line)] bg-white shadow-[0_-20px_60px_rgba(17,32,49,0.18)] md:max-h-[85vh] md:w-[min(760px,calc(100vw-2rem))] md:rounded-[1.9rem]"
+          className="relative mx-auto grid h-[92vh] min-h-0 w-full max-w-[760px] grid-rows-[auto,minmax(0,1fr),auto] overflow-hidden rounded-t-[1.9rem] border border-[var(--line)] bg-white shadow-[0_-20px_60px_rgba(17,32,49,0.18)] md:h-[85vh] md:w-[min(760px,calc(100vw-2rem))] md:rounded-[1.9rem]"
         >
           <div className="md:hidden flex justify-center pt-3">
             <div className="h-1.5 w-14 rounded-full bg-[var(--line)]" />
           </div>
-          <div
-            ref={sheetScrollRef}
-            className="overflow-y-auto px-5 pb-6 pt-4 md:p-6"
-          >
-            <div className="relative h-[200px] w-full overflow-hidden rounded-[1.4rem] sm:h-[240px] md:h-[340px] md:rounded-[1.5rem]">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            <div className="mt-4 sm:mt-4">
-              <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-start">
-                <div className="flex min-w-0 flex-wrap items-center gap-2">
-                  <span className="inline-flex h-8 whitespace-nowrap items-center rounded-full border border-white/60 bg-[var(--purple-soft)] px-3 text-[10px] font-medium text-[var(--purple)] sm:h-10 sm:px-4 sm:text-xs">
-                    {project.role}
-                  </span>
-                  <span className="inline-flex h-8 whitespace-nowrap items-center rounded-full border border-white/60 bg-white/56 px-3 text-[10px] font-medium text-[var(--gray-secondary)] sm:h-10 sm:px-4 sm:text-xs">
-                    {project.date}
-                  </span>
-                </div>
-
-                <div className="hidden md:flex flex-wrap items-center gap-2 shrink-0 mt-2 sm:mt-0">
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-8 items-center gap-1.5 rounded-full border border-white/60 bg-white/56 px-3 text-[11px] font-medium text-[var(--gray-primary)] transition hover:border-[#b59af6] hover:bg-white/72 hover:text-[var(--purple)] sm:h-10 sm:px-4 sm:text-sm"
-                  >
-                    <GlobalOutlined />
-                    Visit
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={onClose}
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/60 bg-white/56 text-[var(--gray-secondary)] transition hover:border-[#b59af6] hover:bg-white/72 hover:text-[var(--purple)] sm:h-10 sm:w-10"
-                  >
-                    <CloseOutlined />
-                  </button>
-                </div>
+          <div className="relative min-h-0 overflow-hidden">
+            <div
+              ref={sheetScrollRef}
+              className="modal-scrollbar h-full min-h-0 overflow-y-auto px-5 pb-6 pt-4 md:px-6 md:pb-6 md:pr-10 md:pt-6"
+            >
+              <div className="relative aspect-video w-full overflow-hidden rounded-[1.4rem] md:rounded-[1.5rem]">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                />
               </div>
 
-              <div className="mt-4 md:hidden">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--gray-secondary)]">
-                  Overview
-                </p>
+              <div className="mt-4 sm:mt-4">
+                <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-start">
+                  <div className="flex w-full items-center justify-between gap-4">
+                    <p className="text-xs font-semibold text-[var(--purple)] sm:text-sm">
+                      {project.role}
+                    </p>
+                    <span className="text-xs font-medium text-[var(--gray-secondary)] sm:text-sm">
+                      {project.date}
+                    </span>
+                  </div>
+                </div>
+
+                <h2 className="mt-3 text-[1.9rem] leading-[1.02] font-medium tracking-[-0.03em] text-[var(--gray-primary)] sm:mt-3 sm:text-2xl md:text-[2rem]">
+                  {project.title}
+                </h2>
               </div>
 
-              <h2 className="mt-3 text-[1.9rem] leading-[1.02] font-medium tracking-[-0.03em] text-[var(--gray-primary)] sm:mt-3 sm:text-2xl md:text-[2rem]">
-                {project.title}
-              </h2>
-            </div>
+              <p className="mt-4 text-sm leading-7 text-[var(--gray-secondary)] sm:text-base">
+                {project.description}
+              </p>
 
-            <p className="mt-4 text-sm leading-7 text-[var(--gray-secondary)] sm:text-base">
-              {project.description}
-            </p>
+              {(detailIntro || detailPoints?.length) && (
+                <div className="mt-7">
+                  {detailIntro && (
+                    <p className="text-sm leading-7 text-[var(--gray-primary)] sm:text-base">
+                      {detailIntro}
+                    </p>
+                  )}
 
-            {project.tech && (
-              <>
-                <div className="mt-6">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--gray-secondary)]">
-                    Tech Stack
-                  </p>
-                </div>
-                <div className="mt-3 flex flex-wrap gap-3">
-                  {project.tech.map((tech, index) => (
-                    <div
-                      key={`${tech}-${index}`}
-                      title={tech}
-                      className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[var(--line)] bg-white shadow-[0_8px_20px_rgba(17,32,49,0.04)]"
-                    >
-                      {techIconMap[tech] ? (
-                        <Image
-                          src={techIconMap[tech]}
-                          alt={tech}
-                          width={24}
-                          height={24}
-                          className="h-6 w-6 object-contain"
-                        />
-                      ) : (
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--gray-secondary)]">
-                          {getTechFallbackLabel(tech)}
-                        </span>
-                      )}
+                  {detailPoints.length > 0 && (
+                    <div className="mt-5 flex flex-col gap-3">
+                      {detailPoints.map((item) => (
+                        <div
+                          key={item.title}
+                          className="rounded-[1.25rem] border border-[var(--line)] bg-white p-4 shadow-[0_10px_26px_rgba(17,32,49,0.05)]"
+                        >
+                          <p className="text-sm font-semibold text-[var(--gray-primary)]">
+                            {item.title}
+                          </p>
+                          {item.techItems?.length ? (
+                            <div className="mt-3 flex flex-wrap items-center gap-3">
+                              {item.techItems.map((tech) => (
+                                <div
+                                  key={tech}
+                                  title={tech}
+                                  className="flex h-8 w-8 items-center justify-center"
+                                >
+                                  {techIconMap[tech] ? (
+                                    <Image
+                                      src={techIconMap[tech]}
+                                      alt={tech}
+                                      width={48}
+                                      height={48}
+                                      className="h-18 w-18 shrink-0 object-contain"
+                                    />
+                                  ) : (
+                                    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center text-[9px] font-semibold uppercase tracking-[0.08em] text-[var(--gray-secondary)]">
+                                      {getTechFallbackLabel(tech)}
+                                    </span>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <p className="mt-2 text-sm leading-6 text-[var(--gray-secondary)]">
+                              {item.content}
+                            </p>
+                          )}
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  )}
                 </div>
-              </>
+              )}
+            </div>
+
+            {scrollIndicator.visible && (
+              <div className="pointer-events-none absolute inset-y-4 right-2 hidden w-1.5 md:block">
+                <div className="relative h-full rounded-full bg-[rgba(127,145,172,0.14)]">
+                  <div
+                    className="absolute left-0 right-0 rounded-full bg-gradient-to-b from-[rgba(103,61,230,0.9)] to-[rgba(103,61,230,0.45)] shadow-[0_8px_18px_rgba(103,61,230,0.2)]"
+                    style={{
+                      height: `${scrollIndicator.height}px`,
+                      transform: `translateY(${scrollIndicator.offset}px)`,
+                    }}
+                  />
+                </div>
+              </div>
             )}
           </div>
-          <div className="md:hidden border-t border-[var(--line)] bg-white/96 px-5 py-4 backdrop-blur-xl">
-            <div className="flex items-center gap-3">
+          <div className="border-t border-[var(--line)] bg-white/96 px-5 py-4 backdrop-blur-xl md:px-6">
+            <div className="flex items-center gap-3 md:justify-end">
               <Link
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full border border-[#b59af6] bg-[var(--purple)] px-4 text-sm font-medium text-white"
+                className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full border border-[#b59af6] bg-[var(--purple)] px-4 text-sm font-medium text-white md:flex-none md:px-5"
               >
                 <GlobalOutlined />
                 Open project

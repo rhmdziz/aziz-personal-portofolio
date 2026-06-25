@@ -44,7 +44,7 @@ export default function Project() {
               transition={{ duration: 0.5, delay: index * 0.12 }}
             >
               <div className="ios-panel-strong group cursor-pointer overflow-hidden rounded-[2rem] transition duration-300 hover:-translate-y-1.5">
-                <div className="relative h-[200px] w-full overflow-hidden sm:h-[220px]">
+                <div className="relative aspect-video w-full overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
