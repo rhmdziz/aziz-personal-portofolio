@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
-import { CloseOutlined, GlobalOutlined } from "@ant-design/icons";
+import { CloseOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -181,7 +181,7 @@ export default function ProjectModal({ project, onClose }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.22, ease: "easeOut" }}
-      className="fixed inset-0 z-[11000] bg-[rgba(16,32,58,0.22)] backdrop-blur-md"
+      className="fixed inset-0 z-[11000] bg-ink/40"
       onClick={onClose}
     >
       <div className="absolute inset-x-0 bottom-0 top-auto px-0 pb-0 md:inset-0 md:flex md:items-center md:justify-center md:p-4">
@@ -194,17 +194,17 @@ export default function ProjectModal({ project, onClose }) {
           animate={panelAnimation.animate}
           exit={panelAnimation.exit}
           transition={{ duration: 0.28, ease: "easeOut" }}
-          className="relative mx-auto grid h-[92vh] min-h-0 w-full max-w-[760px] grid-rows-[auto,minmax(0,1fr),auto] overflow-hidden rounded-t-[1.9rem] border border-[var(--line)] bg-white shadow-[0_-20px_60px_rgba(17,32,49,0.18)] md:h-[85vh] md:w-[min(760px,calc(100vw-2rem))] md:rounded-[1.9rem]"
+          className="relative mx-auto grid h-[92vh] min-h-0 w-full max-w-[760px] grid-rows-[auto,minmax(0,1fr),auto] overflow-hidden rounded-t-xl border border-line bg-paper md:h-[85vh] md:w-[min(760px,calc(100vw-2rem))] md:rounded-xl"
         >
           <div className="md:hidden flex justify-center pt-3">
-            <div className="h-1.5 w-14 rounded-full bg-[var(--line)]" />
+            <div className="h-1.5 w-14 rounded-full bg-line" />
           </div>
           <div className="relative min-h-0 overflow-hidden">
             <div
               ref={sheetScrollRef}
               className="modal-scrollbar h-full min-h-0 overflow-y-auto px-5 pb-6 pt-4 md:px-6 md:pb-6 md:pr-10 md:pt-6"
             >
-              <div className="relative aspect-video w-full overflow-hidden rounded-[1.4rem] md:rounded-[1.5rem]">
+              <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-line bg-[#EBE8E0]">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -216,40 +216,37 @@ export default function ProjectModal({ project, onClose }) {
               <div className="mt-4 sm:mt-4">
                 <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-start">
                   <div className="flex w-full items-center justify-between gap-4">
-                    <p className="text-xs font-semibold text-[var(--purple)] sm:text-sm">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-accent">
                       {project.role}
                     </p>
-                    <span className="text-xs font-medium text-[var(--gray-secondary)] sm:text-sm">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
                       {project.date}
                     </span>
                   </div>
                 </div>
 
-                <h2 className="mt-3 text-[1.9rem] leading-[1.02] font-medium tracking-[-0.03em] text-[var(--gray-primary)] sm:mt-3 sm:text-2xl md:text-[2rem]">
+                <h2 className="mt-3 font-serif text-4xl leading-none sm:text-5xl">
                   {project.title}
                 </h2>
               </div>
 
-              <p className="mt-4 text-sm leading-7 text-[var(--gray-secondary)] sm:text-base">
+              <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
                 {project.description}
               </p>
 
               {(detailIntro || detailPoints?.length) && (
                 <div className="mt-7">
                   {detailIntro && (
-                    <p className="text-sm leading-7 text-[var(--gray-primary)] sm:text-base">
+                    <p className="text-sm leading-7 text-ink sm:text-base">
                       {detailIntro}
                     </p>
                   )}
 
                   {detailPoints.length > 0 && (
-                    <div className="mt-5 flex flex-col gap-3">
+                    <div className="mt-5 grid gap-px border border-line bg-line">
                       {detailPoints.map((item) => (
-                        <div
-                          key={item.title}
-                          className="rounded-[1.25rem] border border-[var(--line)] bg-white p-4 shadow-[0_10px_26px_rgba(17,32,49,0.05)]"
-                        >
-                          <p className="text-sm font-semibold text-[var(--gray-primary)]">
+                        <div key={item.title} className="bg-paper p-4">
+                          <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
                             {item.title}
                           </p>
                           {item.techItems?.length ? (
@@ -269,7 +266,7 @@ export default function ProjectModal({ project, onClose }) {
                                       className="h-18 w-18 shrink-0 object-contain"
                                     />
                                   ) : (
-                                    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center text-[9px] font-semibold uppercase tracking-[0.08em] text-[var(--gray-secondary)]">
+                                    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center font-mono text-[9px] uppercase tracking-[0.08em] text-muted">
                                       {getTechFallbackLabel(tech)}
                                     </span>
                                   )}
@@ -277,7 +274,7 @@ export default function ProjectModal({ project, onClose }) {
                               ))}
                             </div>
                           ) : (
-                            <p className="mt-2 text-sm leading-6 text-[var(--gray-secondary)]">
+                            <p className="mt-2 text-sm leading-6 text-ink">
                               {item.content}
                             </p>
                           )}
@@ -291,9 +288,9 @@ export default function ProjectModal({ project, onClose }) {
 
             {scrollIndicator.visible && (
               <div className="pointer-events-none absolute inset-y-4 right-2 hidden w-1.5 md:block">
-                <div className="relative h-full rounded-full bg-[rgba(127,145,172,0.14)]">
+                <div className="relative h-full rounded-full bg-line">
                   <div
-                    className="absolute left-0 right-0 rounded-full bg-gradient-to-b from-[rgba(103,61,230,0.9)] to-[rgba(103,61,230,0.45)] shadow-[0_8px_18px_rgba(103,61,230,0.2)]"
+                    className="absolute left-0 right-0 rounded-full bg-accent"
                     style={{
                       height: `${scrollIndicator.height}px`,
                       transform: `translateY(${scrollIndicator.offset}px)`,
@@ -303,21 +300,22 @@ export default function ProjectModal({ project, onClose }) {
               </div>
             )}
           </div>
-          <div className="border-t border-[var(--line)] bg-white/96 px-5 py-4 backdrop-blur-xl md:px-6">
+          <div className="border-t border-line bg-paper px-5 py-4 md:px-6">
             <div className="flex items-center gap-3 md:justify-end">
               <Link
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full border border-[#b59af6] bg-[var(--purple)] px-4 text-sm font-medium text-white md:flex-none md:px-5"
+                className="group inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-white transition duration-300 hover:-translate-y-0.5 hover:bg-ink md:flex-none"
               >
-                <GlobalOutlined />
                 Open project
+                <span aria-hidden className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
               </Link>
               <button
                 type="button"
                 onClick={onClose}
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[var(--line)] bg-white text-[var(--gray-secondary)]"
+                aria-label="Close"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-accent"
               >
                 <CloseOutlined />
               </button>

@@ -1,83 +1,37 @@
 "use client";
 import { skills } from "@/data/skills";
-import { motion } from "framer-motion";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { container, Em, SectionLabel } from "../ui/primitives";
 
 export default function Skill() {
-  const totalColumns = 7;
-  const remaining =
-    totalColumns - (skills.length % totalColumns || totalColumns);
-
   return (
-    <section
-      id="skill"
-      className="relative flex w-full justify-center px-6 py-24 md:pt-28"
-    >
-      <div className="section-shell">
-        <div className="ios-panel-strong overflow-hidden rounded-[2.5rem] p-6 sm:p-8 md:p-10">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-2xl">
-              <p className="section-kicker">Skills</p>
-              <h2 className="section-title">
-                Tools I use to build polished products.
-              </h2>
-            </div>
-            <p className="section-copy max-w-md">
-              A working set of design, development, and problem-solving tools
-              used to turn ideas into clear, production-ready experiences.
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-2 gap-4 text-center sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.4,
-                  delay: index * 0.05,
-                  ease: "easeOut",
-                }}
-              >
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <button
-                      type="button"
-                      aria-label={skill.name}
-                      className="ios-panel group flex aspect-square w-full items-center justify-center rounded-[1.7rem] px-4 transition duration-300 hover:-translate-y-1 hover:bg-white/78"
-                    >
-                      <div className="h-12 w-12 transition duration-300 group-hover:scale-105">
-                        {skill.icon}
-                      </div>
-                    </button>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="top"
-                    sideOffset={10}
-                    className="rounded-full bg-[var(--gray-primary)] px-3 py-1.5 text-xs text-white"
-                  >
-                    {skill.name}
-                  </TooltipContent>
-                </Tooltip>
-              </motion.div>
-            ))}
-            {Array.from({ length: remaining }).map((_, i) => (
-              <motion.div
-                key={`placeholder-${i}`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 0.45, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.4,
-                  delay: skills.length * 0.05 + i * 0.05,
-                }}
-                className="aspect-square rounded-[1.7rem] border border-dashed border-white/55 bg-white/18 block"
-              ></motion.div>
-            ))}
-          </div>
+    <section id="skill" className="w-full scroll-mt-16 border-b border-line">
+      <div className={`${container} py-20 sm:py-28`}>
+        <SectionLabel no="03" label="Skills" />
+        <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <h2 className="max-w-3xl text-4xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-5xl lg:text-6xl">
+            Tools I use to build <Em>polished</Em> products.
+          </h2>
+          <p className="max-w-md text-base leading-7 text-muted sm:text-lg sm:leading-8">
+            A working set of design, development, and problem-solving tools,
+            used to turn ideas into production-ready experiences.
+          </p>
         </div>
+
+        <ul className="mt-14 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          {skills.map((skill) => (
+            <li
+              key={skill.name}
+              className="group flex aspect-square flex-col justify-between bg-paper p-5 transition-colors duration-300 hover:bg-white"
+            >
+              <div className="h-12 w-12 transition-transform duration-300 group-hover:-translate-y-0.5 [&_img]:h-full [&_img]:w-full [&_img]:object-contain">
+                {skill.icon}
+              </div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
+                {skill.name}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
